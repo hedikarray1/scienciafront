@@ -1,0 +1,282 @@
+<div class="section-list-reservation">
+
+  <div class="header-list-reservation">
+
+    <h1 class="titre-liste-reservation">Les demandes de Réservation</h1>
+    <div class="header-right-side">
+
+      <div class="search-list-reservation">
+        <input type="text" placeholder="recherche" [(ngModel)]="searchText"
+          class="form-control input-search-reservation" />
+      </div>
+
+    </div>
+
+  </div>
+
+  <mat-tab-group class="tab-group" [selectedIndex]="selectedTab" mat-align-tabs="center" [selectedIndex]="0" animationDuration="1000ms">
+
+    <mat-tab label="Nouveaux demandes ">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="reservationsEncours.length== 0 ">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-4">
+                <h1 class="info-date-liste-reservation-2" title="date">aucune demande de réservation </h1>
+              </div>
+            </div>
+          </div>
+          <div class="card-mes-reservation"
+            *ngFor="  let res of reservationsEncours | filter : searchText ;let i=index ">
+            <div class="info-mes-reservation-1">
+              <h1 class="titre-formation-liste-reservation">{{res.formation.nom}}</h1>
+              <h1 class="info-date-liste-reservation" title="date">{{res.date_formation}}</h1>
+
+            </div>
+           
+            <div class="info-mes-reservation-2">
+              <div class="formateur-info-mes-resevation" (click)="openDialogDetailUser(res.ecole)">
+                <div class="circular--landscape">
+                  <img [src]="getLinkPicture(res.ecole.photo)" (error)="changeSource($event)">
+                </div>
+
+                <h1 class="titre-formation-liste-reservation">{{res.ecole.nom}} </h1>
+
+              </div>
+
+              <div class="feedback-info-mes-resevation">
+                <ul>
+                  <li class="info-nbr-liste-reservation">{{res.nbr_enfants}} enfants</li>
+                  <li class="info-nbr-liste-reservation">{{res.formation.duree}} heures</li>
+                </ul>
+
+                <h1 class="info-date" title="date">{{res.date_reservation}}</h1>
+
+                <div class="container-button-accepter">
+                  <div class="d-flex btn-go-to-add-feedback-content">
+
+                    <button class="btn btn-refuser" (click)="openDialogRefuser(res)">
+                      Refuser
+                    </button>
+
+                  </div>
+                  <div class="d-flex btn-go-to-add-feedback-content">
+
+                    <button class="btn btn-accepter" (click)="openDialogAccepter(res)">
+                      Accepter
+                    </button>
+
+                  </div>
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Formation accepté ">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="reservationsHistoriqueAcceptrer.length== 0 ">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-4">
+
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune réservation accepter </h1>
+
+              </div>
+            </div>
+          </div>
+
+          <div *ngFor="  let res of reservationsHistoriqueAcceptrer | filter : searchText ;let i=index ">
+            <div class="card-mes-reservation" *ngIf="res.status == 1">
+
+              <div class="info-mes-reservation-1">
+                <h1 class="titre-formation-liste-reservation">{{res.formation.nom}}</h1>
+                <h1 class="info-date-liste-reservation" title="date">{{res.date_formation}}</h1>
+
+                <p class="container-icon-status" title="Accepter">
+                  <i href="https://github.com/FortAwesome/Font-Awesome"
+                    class="fa fa-check-circle-o fa-2x icon-color-accepter" aria-hidden="true"></i>
+                </p>
+
+              </div>
+
+             
+
+              <div class="info-mes-reservation-2">
+                <div class="formateur-info-mes-resevation" (click)="openDialogDetailUser(res.ecole)">
+                  <div class="circular--landscape">
+                    <img [src]="getLinkPicture(res.ecole.photo)" (error)="changeSource($event)">
+                  </div>
+
+                  <h1 class="titre-formation-liste-reservation">{{res.ecole.nom}} </h1>
+
+                </div>
+
+                <div class="feedback-info-mes-resevation">
+                  <ul>
+                    <li class="info-nbr-liste-reservation">{{res.nbr_enfants}} enfants</li>
+                    <li class="info-nbr-liste-reservation">{{res.formation.duree}} heures</li>
+                  </ul>
+
+                  <h1 class="info-date" title="date">{{res.date_reservation}}</h1>
+
+                  <div class="container-button-accepter">
+                    <div class="d-flex btn-go-to-add-feedback-content">
+  
+                      <button class="btn btn-refuser" (click)="openDialogNonValider(res)">
+                        non valider
+                      </button>
+  
+                    </div>
+                    <div class="d-flex btn-go-to-add-feedback-content">
+  
+                      <button class="btn btn-accepter" (click)="openDialogValider(res)">
+                        Valider
+                      </button>
+  
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Formation refusé">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+
+          <div *ngIf="reservationsHistoriqueRefuser.length== 0 ">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-4">
+
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune réservation refuser </h1>
+
+              </div>
+            </div>
+          </div>
+
+          <div *ngFor="  let res of reservationsHistoriqueRefuser | filter : searchText ;let i=index ">
+            <div class="card-mes-reservation" *ngIf="res.status == -1">
+
+              <div class="info-mes-reservation-1">
+                <h1 class="titre-formation-liste-reservation">{{res.formation.nom}}</h1>
+                <h1 class="info-date-liste-reservation" title="date">{{res.date_formation}}</h1>
+                <p class="container-icon-status" title="Refuser">
+                  <i href="https://github.com/FortAwesome/Font-Awesome"
+                    class="fa fa-times-circle-o fa-2x icon-color-refuser" aria-hidden="true"></i>
+                </p>
+              </div>
+            
+              <div class="info-mes-reservation-2">
+                <div class="formateur-info-mes-resevation" (click)="openDialogDetailUser(res.ecole)">
+                  <div class="circular--landscape">
+                    <img [src]="getLinkPicture(res.ecole.photo)" (error)="changeSource($event)">
+                  </div>
+
+                  <h1 class="titre-formation-liste-reservation">{{res.ecole.nom}} </h1>
+
+                </div>
+
+                <div class="feedback-info-mes-resevation">
+                  <ul>
+                    <li class="info-nbr-liste-reservation">{{res.nbr_enfants}} enfants</li>
+                    <li class="info-nbr-liste-reservation">{{res.formation.duree}} heures</li>
+                  </ul>
+                  <h1 class="info-date" title="date">{{res.date_reservation}}</h1>
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Formation valider">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+          <div *ngIf="reservationsValider.length== 0 ">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-4">
+
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune Formation valider </h1>
+
+              </div>
+            </div>
+          </div>
+
+          <div *ngFor="  let res of reservationsValider | filter : searchText ;let i=index ">
+            <div class="card-mes-reservation" *ngIf="res.status == 2">
+
+              <div class="info-mes-reservation-1">
+                <h1 class="titre-formation-liste-reservation">{{res.formation.nom}}</h1>
+                <h1 class="info-date-liste-reservation" title="date">{{res.date_formation}}</h1>
+                <p class="txt-status-validation icon-color-accepter" title="valide" *ngIf="res.status_validation == 1">
+                  valide 
+                </p>
+                <p class="txt-status-validation icon-color-refuser" title="invalide" *ngIf="res.status_validation == -1">
+                  invalide
+                </p>
+              </div>
+            
+              <div class="info-mes-reservation-2">
+                <div class="formateur-info-mes-resevation" (click)="openDialogDetailUser(res.ecole)">
+                  <div class="circular--landscape">
+                    <img [src]="getLinkPicture(res.ecole.photo)" (error)="changeSource($event)">
+                  </div>
+
+                  <h1 class="titre-formation-liste-reservation">{{res.ecole.nom}} </h1>
+
+                </div>
+
+                <div class="feedback-info-mes-resevation">
+                  <ul>
+                    <li class="info-nbr-liste-reservation">{{res.nbr_enfants}} enfants</li>
+                    <li class="info-nbr-liste-reservation">{{res.formation.duree}} heures</li>
+                  </ul>
+                  <h1 class="info-date" title="date">{{res.date_reservation}}</h1>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

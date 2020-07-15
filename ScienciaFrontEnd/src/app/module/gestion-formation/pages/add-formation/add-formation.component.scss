@@ -1,0 +1,87 @@
+.section-add-formation{
+    display: flex;
+    flex-direction: row;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 50px;
+    background-color: #faf8f8;
+    align-items:  center ;
+    justify-content: center ;
+    min-height: 86vh;
+    //   height: -webkit-fill-available;
+}
+
+.add-formation-formulaire{
+ 
+    width: 80%;
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container-left{
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 40%;
+}
+
+.image-bg-add-formation{
+   
+    width: 90%;
+}
+
+.form-group {
+    margin-bottom: 2rem !important;
+    
+}
+.form-add-formation{
+    //justify-content: flex-end ;
+    align-self:  flex-end;
+    align-items: flex-end;
+    width: 40%;
+    margin-top: 4%;
+}
+
+.btn-add-formation-display{
+    justify-content: flex-end ;
+}
+
+.titre-add-formation{
+    color: #005578;
+    font-size: xx-large;
+    font-weight: 500;
+    
+}
+
+.btn-add-formation{
+    width: 10em;
+    border-radius: 0.5em;
+    background-color: #2091c0;
+    border-color: #2091c0;
+    color: #fff;
+}
+
+
+.btn-annuler-add-formation{
+    width: 10em;
+    border-radius: 0.5em;
+    background-color: #769baa;
+    border-color: #769baa;
+    color: #fff;
+}
+
+.input-add-formation{
+    width: 97%;
+    background-color:  #ededed ;
+}
+
+.alert-danger{
+    width: 97%;
+}
+
+.button-container{
+    margin-left: 15px;
+}

@@ -1,0 +1,50 @@
+<div class="section-list-stock">
+
+   <div class="header-list-stock">
+ 
+     <h1 class="titre-liste-stock">Liste des kits</h1>
+     <div class="header-right-stock">
+      <div class="image-add-stock-container" (click)="openDialogPanier()" *ngIf="kitsDemander.length == 0" >
+        <img src="../../../../../assets/panier.png">
+      </div>
+      <div class="image-add-stock-container" (click)="openDialogPanier()" *ngIf="kitsDemander.length != 0" matBadge="{{kitsDemander.length}}" matBadgeColor="warn">
+        <img src="../../../../../assets/panier.png">
+      </div>
+       <div class="search-list-stock">
+         <input type="text" placeholder="recherche" [(ngModel)]="searchText"  class="form-control input-search-stock" />
+       </div>
+     </div>
+   </div>
+ 
+   <div class="content-list-stock">
+ 
+     <div class="table-container">
+       <table>
+         <thead>
+           <tr class="">
+             <th class="">Composant</th>
+             <th class="">Quantite</th>
+             <th class="">Type</th>
+             <th class="">Prix</th>
+             <th class="description-table-th">Description</th>
+             <th class="icon-table-th"></th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr class="row-table-stock"*ngFor="let stock of stocks | filter:searchText">
+             <td class="">{{stock.nom}}</td>
+             <td class="">{{stock.quantite}}</td>
+             <td class="">{{stock.type}}</td>
+             <td class="">{{stock.prix}} dt</td>
+             <td class="description-table-td">{{stock.description}}</td>
+            <td class="icon-table-td"> 
+               <img class="img-stock-table" src="../../../../../assets/add-panier3.png" (click)="openDialog(stock)" alt="">
+             </td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+   </div>
+ 
+ </div>
+ 

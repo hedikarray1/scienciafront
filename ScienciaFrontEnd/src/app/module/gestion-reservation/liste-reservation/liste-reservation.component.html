@@ -1,0 +1,350 @@
+<div class="section-list-reservation">
+
+  <div class="header-list-reservation">
+
+    <h1 class="titre-liste-reservation">Mes Réservations</h1>
+    <div class="header-right-side">
+      <div class="image-add-reservation-container" (click)="gotoAddReservation()">
+        <img src="../../../../assets/new-reservation-2.png">
+      </div>
+      <div class="search-list-reservation">
+        <input type="text" placeholder="recherche" [(ngModel)]="searchText"
+          class="form-control input-search-reservation" />
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <mat-tab-group class="tab-group" mat-align-tabs="center" [selectedIndex]="0" animationDuration="700ms">
+
+
+    <mat-tab label="Reservations en cours">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="reservationsEncours.length== 0 ">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-4">
+
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune réservation en cours de traitement</h1>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card-mes-reservation" *ngFor="  let res of reservationsEncours | filter : searchText ;">
+
+            <div class="info-mes-reservation-1">
+              <h1 class="titre-formation-liste-reservation">{{res.formation.nom}}</h1>
+              <h1 class="info-date-liste-reservation" title="date">{{res.date_formation}}</h1>
+
+              <p class="container-icon-status" *ngIf="res.status == 1" title="Accepter">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-check-circle-o fa-2x icon-color-accepter" aria-hidden="true"></i>
+              </p>
+              <p class="container-icon-status" *ngIf="res.status == 0" title="En cours">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-circle-o-notch fa-spin   fa-fw fa-2x icon-color-encours" aria-hidden="true"></i>
+              </p>
+              <p class="container-icon-status" *ngIf="res.status == -1" title="Refuser">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-times-circle-o fa-2x icon-color-refuser" aria-hidden="true"></i>
+              </p>
+
+            </div>
+
+            <div class="info-mes-reservation-1">
+              <h2 class="info-nbr-liste-reservation">{{res.nbr_enfants}} enfant</h2>
+              <h2 class="info-prix-liste-reservation">{{res.prix_totale}} DT</h2>
+
+            </div>
+            <div class="info-mes-reservation-2">
+              <div class="formateur-info-mes-resevation" (click)="openDialogDetailUser(res.formateur)">
+                <div class="circular--landscape">
+                  <img [src]="getLinkPicture(res.formateur.photo)" (error)="changeSource($event)">
+                </div>
+                <h1 class="titre-formation-liste-reservation">{{res.formateur.nom}} {{res.formateur.prenom}}</h1>
+
+              </div>
+
+              <div class="feedback-info-mes-resevation">
+
+                <h1 class="info-date" title="date">{{res.date_reservation}}</h1>
+
+                <div class="d-flex btn-go-to-add-feedback-content">
+
+                  <button class="btn btn-go-to-add-annuler" (click)="openDialog(res)">
+                    Annuler la réservation
+                  </button>
+
+                </div>
+
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+
+
+        </div>
+
+        <!-- calender container-->
+        <!--
+          <div class="content-right-list-reservation">
+            <ejs-schedule class="calendar-activite-formateur" startHour='08:00' endHour='18:00' [readonly]="isReadOnly"
+              [views]='views' [currentView]='currentView'>
+            </ejs-schedule>
+      
+          </div>  
+        -->
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Reservation Accepter">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="reservationsAccepter.length== 0 ">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-4">
+
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune réservation accepter</h1>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card-mes-reservation" *ngFor="  let res of reservationsAccepter | filter : searchText ;">
+
+            <div class="info-mes-reservation-1">
+              <h1 class="titre-formation-liste-reservation">{{res.formation.nom}}</h1>
+              <h1 class="info-date-liste-reservation" title="date">{{res.date_formation}}</h1>
+
+              <p class="container-icon-status" *ngIf="res.status == 1" title="Accepter">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-check-circle-o fa-2x icon-color-accepter" aria-hidden="true"></i>
+              </p>
+              <p class="container-icon-status" *ngIf="res.status == 0" title="En cours">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-circle-o-notch fa-spin   fa-fw fa-2x icon-color-encours" aria-hidden="true"></i>
+              </p>
+              <p class="container-icon-status" *ngIf="res.status == -1" title="Refuser">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-times-circle-o fa-2x icon-color-refuser" aria-hidden="true"></i>
+              </p>
+
+            </div>
+
+            <div class="info-mes-reservation-1">
+              <h2 class="info-nbr-liste-reservation">{{res.nbr_enfants}} enfant</h2>
+              <h2 class="info-prix-liste-reservation">{{res.prix_totale}} DT</h2>
+
+            </div>
+            <div class="info-mes-reservation-2">
+              <div class="formateur-info-mes-resevation" (click)="openDialogDetailUser(res.formateur)">
+                <div class="circular--landscape">
+                  <img [src]="getLinkPicture(res.formateur.photo)" (error)="changeSource($event)">
+                </div>
+                <h1 class="titre-formation-liste-reservation">{{res.formateur.nom}} {{res.formateur.prenom}}</h1>
+
+              </div>
+
+              <div class="feedback-info-mes-resevation">
+                <h1 class="info-date" title="date">{{res.date_reservation}}</h1>
+
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+
+
+        </div>
+
+        <!-- calender container-->
+        <!--
+          <div class="content-right-list-reservation">
+            <ejs-schedule class="calendar-activite-formateur" startHour='08:00' endHour='18:00' [readonly]="isReadOnly"
+              [views]='views' [currentView]='currentView'>
+            </ejs-schedule>
+      
+          </div>  
+        -->
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Reservation Refuser">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="reservationsRefuser.length== 0 ">
+            <div class="card-mes-reservation">
+
+              <div class="info-mes-reservation-4">
+
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune réservation refuser</h1>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="card-mes-reservation" *ngFor="  let res of reservationsRefuser | filter : searchText ;">
+
+            <div class="info-mes-reservation-1">
+              <h1 class="titre-formation-liste-reservation">{{res.formation.nom}}</h1>
+              <h1 class="info-date-liste-reservation" title="date">{{res.date_formation}}</h1>
+
+              <p class="container-icon-status" *ngIf="res.status == 1" title="Accepter">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-check-circle-o fa-2x icon-color-accepter" aria-hidden="true"></i>
+              </p>
+              <p class="container-icon-status" *ngIf="res.status == 0" title="En cours">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-circle-o-notch fa-spin   fa-fw fa-2x icon-color-encours" aria-hidden="true"></i>
+              </p>
+              <p class="container-icon-status" *ngIf="res.status == -1" title="Refuser">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-times-circle-o fa-2x icon-color-refuser" aria-hidden="true"></i>
+              </p>
+
+            </div>
+
+            <div class="info-mes-reservation-1">
+              <h2 class="info-nbr-liste-reservation">{{res.nbr_enfants}} enfant</h2>
+              <h2 class="info-prix-liste-reservation">{{res.prix_totale}} DT</h2>
+
+            </div>
+            <div class="info-mes-reservation-2">
+              <div class="formateur-info-mes-resevation" (click)="openDialogDetailUser(res.formateur)">
+                <div class="circular--landscape">
+                  <img [src]="getLinkPicture(res.formateur.photo)" (error)="changeSource($event)">
+                </div>
+                <h1 class="titre-formation-liste-reservation">{{res.formateur.nom}} {{res.formateur.prenom}}</h1>
+
+              </div>
+
+              <div class="feedback-info-mes-resevation">
+
+                <h1 class="info-date" title="date">{{res.date_reservation}}</h1>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Réservations terminé ">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="reservationsTermine.length== 0 ">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-4">
+
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune réservation Terminer</h1>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card-mes-reservation" *ngFor="  let res of reservationsTermine | filter : searchText ;">
+
+            <div class="info-mes-reservation-1">
+              <h1 class="titre-formation-liste-reservation">{{res.formation.nom}}</h1>
+              <h1 class="info-date-liste-reservation" title="date">{{res.date_formation}}</h1>
+
+              <p class="container-icon-status" *ngIf="res.status == 1" title="Accepter">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-check-circle-o fa-2x icon-color-accepter" aria-hidden="true"></i>
+              </p>
+              <p class="container-icon-status" *ngIf="res.status == 0" title="En cours">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-circle-o-notch fa-spin   fa-fw fa-2x icon-color-encours" aria-hidden="true"></i>
+              </p>
+              <p class="container-icon-status" *ngIf="res.status == -1" title="Refuser">
+                <i href="https://github.com/FortAwesome/Font-Awesome"
+                  class="fa fa-times-circle-o fa-2x icon-color-refuser" aria-hidden="true"></i>
+              </p>
+
+            </div>
+
+            <div class="info-mes-reservation-1">
+              <h2 class="info-nbr-liste-reservation">{{res.nbr_enfants}} enfant</h2>
+              <h2 class="info-prix-liste-reservation">{{res.prix_totale}} DT</h2>
+
+            </div>
+            <div class="info-mes-reservation-2">
+              <div class="formateur-info-mes-resevation" (click)="openDialogDetailUser(res.formateur)">
+                <div class="circular--landscape">
+                  <img [src]="getLinkPicture(res.formateur.photo)" (error)="changeSource($event)">
+                </div>
+                <h1 class="titre-formation-liste-reservation">{{res.formateur.nom}} {{res.formateur.prenom}}</h1>
+
+              </div>
+
+              <div class="feedback-info-mes-resevation">
+
+                <div class="d-flex btn-go-to-add-feedback-content">
+
+                  <button class="btn btn-go-to-add-feedback" (click)="openDialog(res)">
+                    envoyer feedback
+                  </button>
+
+                </div>
+
+                <div class="rating-star-container">
+                  <ngb-rating class="star" [(rate)]="currentRate" [max]="5" (fill)="50" [readonly]="true"></ngb-rating>
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+
+        <!-- calender container-->
+        <!--
+        <div class="content-right-list-reservation">
+          <ejs-schedule class="calendar-activite-formateur" startHour='08:00' endHour='18:00' [readonly]="isReadOnly"
+            [views]='views' [currentView]='currentView'>
+          </ejs-schedule>
+    
+        </div>  
+      -->
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+
+</div>

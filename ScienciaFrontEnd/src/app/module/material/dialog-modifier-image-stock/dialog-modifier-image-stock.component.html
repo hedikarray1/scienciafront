@@ -1,0 +1,27 @@
+<h2 mat-dialog-title class="titre-envoyer-feedback">Modifier image composant</h2>
+
+<form class="form-add-formation" [formGroup]="uploadForm" (ngSubmit)=" onSubmit()" novalidate>
+
+<div mat-dialog-content>
+  <div class="form-group">
+    <input type="file" placeholder="" class="form-control input" 
+    formControlName="image"
+    accept="image/*"
+    (change)="onFileSelect($event)" 
+    required />
+
+    <div class="alert-danger"
+      *ngIf="!uploadForm.controls['image'].valid && (uploadForm.controls['image'].touched)">
+      <div [hidden]="!uploadForm.controls['detail_pdf'].errors.required">
+        ce champs est obligatoire
+      </div>
+    </div>
+  </div>
+
+  </div>
+  
+<div mat-dialog-actions align="end">
+  <button mat-button  (click)="onNoClick()">Annuler</button>
+  <button mat-button  (click)="onSubmit()" type="submit" [disabled]="!uploadForm.valid" class="btn-envoyer-feedback" cdkFocusInitial>upload</button>
+</div>
+</form>

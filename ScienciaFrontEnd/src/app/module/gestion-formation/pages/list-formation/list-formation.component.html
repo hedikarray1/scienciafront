@@ -1,0 +1,61 @@
+<div class="section-list-formation">
+
+    <div class="header-list-formation">
+  
+      <h1 class="titre-liste-formation">Gestion du Formation</h1>
+      <div class="header-right-formation">
+        <div class="image-add-formation-container" (click)="goToAddFormation()">
+          <img src="../../../../../assets/new-formation.png">
+        </div>
+        <div class="search-list-formation">
+          <input type="text" placeholder="recherche" [(ngModel)]="searchText" class="form-control input-search-formation " />
+          
+        </div>
+      </div>
+    </div>
+ 
+    <div class="content-list-formation">
+  
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr class="">
+              <th class="">Nom</th>
+              <th class="">Type</th>
+              <th class="prix-table-th">Prix <a >(heure par enfant)</a>  </th>
+              <th class="">Durée</th>
+              <th class="description-table-th">Description</th>
+              <th class="">detail pdf</th>
+              <th class="icon-table-th"></th>
+              <th class="icon-table-th"></th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-table-formation" *ngFor="let formation of formations  | filter:searchText">
+              <td class="">{{formation.nom}}</td>
+              <td class="">{{formation.type}}</td>
+              <td class="">{{formation.prix_enfant_heure}} dt</td>
+              <td class="">{{formation.duree}} hours</td>
+              <td class="description-table-td">{{formation.description}}</td>
+              <td class="">{{formation.detail_pdf}}</td>
+              <td class="icon-table-td"> 
+                <img class="img-formation-table" src="../../../../../assets/edit.png" alt="" (click)="goToModifierFormation(formation.id)">
+              </td>
+             <td class="icon-table-td"> 
+                <img class="img-formation-table" src="../../../../../assets/trash.png" (click)="openDialog(formation.id)" alt="">
+              </td>
+          
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    
+  
+     
+  
+    </div>
+
+  </div>
+  

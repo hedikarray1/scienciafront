@@ -1,0 +1,187 @@
+<div class="section-profil">
+
+   <div class="container-profile-box ">
+ 
+     <div class="container-user-image">
+       <div class="subcontainer-user-image">
+ 
+         <div class="circular--landscape">
+           <img [src]="getLinkPicture()" (error)="changeSource($event)">
+         </div>
+ 
+         <div class="container-modifier-image-user" (click)="openDialogUpload()">
+           <i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-camera fa-2x icon-color"
+             aria-hidden="true"></i>
+         </div>
+ 
+         <div class="container-user-name">
+           <h2>{{user.nom}} {{user.prenom}}</h2>
+           <p>Type de compte : <b> {{user.role}} </b></p>
+         </div>
+ 
+       </div>
+     </div>
+     <div class="container-user-info">
+ 
+       <ul class="ul-user-info">
+         <li>
+           <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-envelope fa-lg icon-color"
+               aria-hidden="true"></i>{{user.email}}</p>
+         </li>
+         <li>
+           <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-user fa-lg icon-color"
+               aria-hidden="true"></i>{{user.username}}</p>
+         </li>
+         <li>
+           <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-map-marker fa-lg icon-color"
+               aria-hidden="true"></i>{{user.adresse}}</p>
+         </li>
+         <li>
+           <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-phone-square fa-lg icon-color"
+               aria-hidden="true"></i>{{user.telephone}}</p>
+         </li>
+ 
+         <li >
+           <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-calendar fa-lg icon-color"
+               aria-hidden="true"></i>{{user.dateNaissance }}</p>
+         </li>
+ 
+       </ul>
+ 
+       <div class="container-button-user">
+         <button class="btn-modif-user" type="button" title="Modifier information" (click)="gotoModifierUser(user.id)"><i
+             href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-pencil fa-lg icon-color2"
+             aria-hidden="true"></i> </button>
+         <button class=" btn-modif-user" type="button" title="Modifier mot de passe"
+           (click)="gotoModifierPasswordUser(user.id)"><i href="https://github.com/FortAwesome/Font-Awesome"
+             class="fa fa-key fa-lg icon-color2" aria-hidden="true"></i> </button>
+         <button class="btn-modif-user" type="button" title="Supprimer utilisateur"
+           (click)="openDialogSupprimer(user.id)"><i href="https://github.com/FortAwesome/Font-Awesome"
+             class="fa fa-trash fa-lg icon-color2" aria-hidden="true"></i> </button>
+         <button class="btn-modif-user" type="button" title="déactive utilisateur" (click)="openDialogBloquer(user.id)"
+           *ngIf="user.etat == 'active'"><i href="https://github.com/FortAwesome/Font-Awesome"
+             class="fa fa-lock fa-lg icon-color2" aria-hidden="true"></i> </button>
+ 
+         <button class="btn-modif-user" type="button" title="activer utilisateur" (click)="openDialogDebloquer(user.id)"
+           *ngIf="user.etat != 'active'"><i href="https://github.com/FortAwesome/Font-Awesome"
+             class="fa fa-unlock fa-lg icon-color2" aria-hidden="true"></i> </button>
+ 
+       </div>
+ 
+     </div>
+ 
+ 
+   </div>
+ 
+   <div class="container-historique-profil">
+ 
+    
+     <div class="tab-container" *ngIf="reservationEtat">
+       <div class="content-list-reservation">
+         <div class="content-left-list-reservation">
+ 
+           <div *ngIf="reservationsEcole.length== 0 ">
+             <div class="card-mes-reservation">
+               <div class="info-mes-reservation-4">
+ 
+ 
+                 <h1 class="info-date-liste-reservation-2" title="date">aucune réservation accepter</h1>
+ 
+               </div>
+             </div>
+           </div>
+ 
+           <div class="card-mes-reservation" *ngFor="  let res of reservationsEcole ">
+ 
+             <div class="info-mes-reservation-1">
+               <h1 class="titre-formation-liste-reservation">{{res.formation.nom}}</h1>
+               <h1 class="info-date-liste-reservation" title="date">{{res.date_formation}}</h1>
+ 
+               <p class="container-icon-status-reservation" *ngIf="res.status == 1" title="Accepter">
+                 <i href="https://github.com/FortAwesome/Font-Awesome"
+                   class="fa fa-check-circle-o fa-2x icon-color-accepter" aria-hidden="true"></i>
+               </p>
+               <p class="container-icon-status-reservation" *ngIf="res.status == 0" title="En cours">
+                 <i href="https://github.com/FortAwesome/Font-Awesome"
+                   class="fa fa-circle-o-notch fa-spin   fa-fw fa-2x icon-color-encours" aria-hidden="true"></i>
+               </p>
+               <p class="container-icon-status-reservation" *ngIf="res.status == -1" title="Refuser">
+                 <i href="https://github.com/FortAwesome/Font-Awesome"
+                   class="fa fa-times-circle-o fa-2x icon-color-refuser" aria-hidden="true"></i>
+               </p>
+ 
+               <p class="container-icon-status-reservation icon-color-accepter txt-reservation-status-terminer" *ngIf="res.status == 2" title="Terminer">
+                 Terminer
+               </p>
+ 
+             </div>
+ 
+            
+             <div class="info-mes-reservation-2">
+               <div class="formateur-info-mes-resevation">
+                 <div class="circular--landscape-formateur-reservation">
+                   <img [src]="getLinkPictureReservation(res.formateur.photo)" (error)="changeSource($event)">
+                 </div>
+                 <h1 >{{res.formateur.nom}} {{res.formateur.prenom}}</h1>
+ 
+               </div>
+ 
+               <div class="feedback-info-mes-resevation">
+                 <ul>
+                   <li class="info-nbr-liste-reservation"><b>{{res.nbr_enfants}}</b> enfants</li>
+                   <li class="info-nbr-liste-reservation"><b>{{res.formation.duree}}</b> heures</li>
+                 </ul>
+                 <h1 class="info-date" title="date">{{res.date_reservation}}</h1>
+ 
+ 
+ 
+               </div>
+ 
+             </div>
+ 
+ 
+           </div>
+ 
+ 
+ 
+ 
+         </div>
+ 
+        
+       </div>
+     </div>
+ 
+    
+ 
+     <div class="tab-container" *ngIf="factureEtat">
+       <h1>facture </h1>
+     </div>
+ 
+     <div class="tab-container" *ngIf="feedbackEtat">
+       <h1>feedback </h1>
+     </div>
+ 
+   
+ 
+   </div>
+ 
+  
+ 
+   <div id="mySidenav" class="sidenav" >
+ 
+ 
+     <a class="reservation" [ngClass]="!reservationEtat ? 'reservation ' : 'reservation active'"
+       (click)="showReservation()">Réservations</a>
+     <a class="facture" [ngClass]="!factureEtat ? 'facture ' : 'facture active'" (click)="showFacture()">Factures</a>
+     <a class="feedback" [ngClass]="!feedbackEtat ? 'feedback ' : 'feedback active'"
+       (click)="showFeedback()">Feedbacks</a>
+ 
+   </div>
+ 
+ 
+ 
+ 
+ </div>
+ 
+ 
+ 

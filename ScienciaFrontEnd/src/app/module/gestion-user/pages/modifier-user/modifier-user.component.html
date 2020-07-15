@@ -1,0 +1,356 @@
+<div class="section-add-user">
+
+
+  <div class="add-user-formulaire">
+
+      <h1 class="titre-add-user">Modifier information d'utilisateur</h1>
+
+      <form class="form-add-user" [formGroup]="userForm" (ngSubmit)=" onSubmit()" novalidate  *ngIf="user.role  != 'Ecole'">
+
+
+
+          <div class="container-formulaire ">
+             
+              <div class="container-formulaire-left">
+                  <div class="form-group">
+
+                      <input type="text" placeholder="Nom d'utilisateur" class="form-control input-add-user"
+                          formControlName="username" [(ngModel)]="user.username" required minlength="3"
+                          maxlength="20" />
+
+                      <div class="alert-danger"
+                          *ngIf="!userForm.controls['username'].valid && (userForm.controls['username'].touched)">
+                          <div [hidden]="!userForm.controls['username'].errors.required">
+                              username is required.
+                          </div>
+                          <div [hidden]="!userForm.controls['username'].errors.minlength">
+                              username must be have 3 character length.
+                          </div>
+                          <div [hidden]="!userForm.controls['username'].errors.maxlength">
+                              username must be have 20 character length.
+                          </div>
+                      </div>
+
+                  </div>
+
+                 
+                  <div class="form-group">
+                      <input type="text" placeholder="Nom " class="form-control input-add-user" formControlName="nom"
+                          [(ngModel)]="user.nom" />
+
+                      <div class="alert-danger"
+                          *ngIf="!userForm.controls['nom'].valid && (userForm.controls['nom'].touched)">
+                          <div [hidden]="!userForm.controls['nom'].errors.required">
+                              nom is required.
+                          </div>
+                          <div [hidden]="!userForm.controls['nom'].errors.minlength">
+                              nom must be have 3 character length.
+                          </div>
+                          <div [hidden]="!userForm.controls['nom'].errors.maxlength">
+                              nom must be have 20 character length.
+                          </div>
+                      </div>
+
+                  </div>
+                  <div class="form-group">
+                      <input type="date" placeholder="Date de naissance" class="form-control input-add-user"
+                          formControlName="dateNaissance" [(ngModel)]="user.dateNaissance" />
+
+                      <div class="alert-danger"
+                          *ngIf="!userForm.controls['dateNaissance'].valid && (userForm.controls['dateNaissance'].touched)">
+                          <div [hidden]="!userForm.controls['dateNaissance'].errors.required">
+                              date is required.
+                          </div>
+                          <div [hidden]="!userForm.controls['dateNaissance'].errors.date">
+                              date de Naissance must be a valid date
+                          </div>
+
+                      </div>
+
+
+                  </div>
+
+
+              </div>
+
+              <div class="container-formulaire-right">
+
+                  <div class="form-group">
+                      <input type="email" placeholder="Email" class="form-control input-add-user"
+                          formControlName="email" [(ngModel)]="user.email" required email />
+
+                      <div class="alert-danger"
+                          *ngIf="!userForm.controls['email'].valid && (userForm.controls['email'].touched)">
+                          <div [hidden]="!userForm.controls['email'].errors.required">
+                              email is required.
+                          </div>
+                          <div [hidden]="!userForm.controls['email'].errors.email">
+                              email must be a valid mail adresse
+                          </div>
+
+                      </div>
+
+                  </div>
+
+                
+
+
+
+
+
+                  <div class="form-group"   >
+                      <input type="text" placeholder="Prénom" class="form-control input-add-user"
+                          formControlName="prenom" [(ngModel)]="user.prenom" 
+                          [disabled]="user.role != 'Ecole'"
+                          /> 
+
+                      <div class="alert-danger"
+                          *ngIf="!userForm.controls['prenom'].valid && (userForm.controls['prenom'].touched)">
+                          <div [hidden]="!userForm.controls['prenom'].errors.required">
+                              prenom is required.
+                          </div>
+                          <div [hidden]="!userForm.controls['prenom'].errors.minlength">
+                              prenom must be have 3 character length.
+                          </div>
+                          <div [hidden]="!userForm.controls['prenom'].errors.maxlength">
+                              prenom must be have 20 character length.
+                          </div>
+                      </div>
+                  </div>
+
+               
+
+                  <div class="form-group">
+                      <input type="tel" maxlength="8" placeholder="Numéro de télèphone"
+                          class="form-control input-add-user" formControlName="telephone"
+                          [(ngModel)]="user.telephone" required tel minlength="8" />
+
+                      <div class="alert-danger"
+                          *ngIf="!userForm.controls['telephone'].valid && (userForm.controls['telephone'].touched)">
+                          <div [hidden]="!userForm.controls['telephone'].errors.required">
+                              telephone is required.
+                          </div>
+                          <div [hidden]="!userForm.controls['telephone'].errors.minlength">
+                              telephone must be have 8 character length.
+                          </div>
+                          <div [hidden]="!userForm.controls['telephone'].errors.tel">
+                              telephone must be a phone number
+                          </div>
+                      </div>
+
+                  </div>
+
+
+
+              </div>
+
+          </div>
+
+          <div class="form-group1">
+
+              <select class="form-control input-add-user select-adresse" formControlName="adresse"
+                  [(ngModel)]="user.adresse" required>
+
+                  <option value="" disabled selected hidden>Adresse</option>
+                  <option *ngFor="let ad of adresseArray" [ngValue]="ad" [selected]=" user.adresse === ad">
+                      {{ad}}</option>
+              </select>
+
+              <div class="alert-danger"
+                  *ngIf="!userForm.controls['adresse'].valid && (userForm.controls['adresse'].touched)">
+                  <div [hidden]="!userForm.controls['adresse'].errors.required">
+                      adresse is required.
+                  </div>
+              </div>
+
+          </div>
+
+          <div class="container-formulaire ">
+              <div class="container-formulaire-left">
+
+                  <div class="form-group">
+                      <div class="d-flex btn-add-user-display">
+
+                          <button class="  btn btn-upload-photo-user" (click)="gotoDetailUser(user.id)">
+                              Annuler
+                          </button>
+
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="container-formulaire-right">
+
+                  <div class="form-group">
+                      <div class="d-flex btn-add-user-display">
+
+                          <button class="btn btn-primary btn-block btn-add-user" type="submit"
+                              [disabled]="!userForm.valid">
+                              Modifier
+                          </button>
+
+                      </div>
+
+                  </div>
+
+              </div>
+
+          </div>
+
+      </form>
+
+      <form class="form-add-user" [formGroup]="ecoleForm" (ngSubmit)=" onSubmit()" novalidate  *ngIf="user.role  == 'Ecole'">
+
+
+
+          <div class="container-formulaire ">
+             
+              <div class="container-formulaire-left">
+                  <div class="form-group">
+
+                      <input type="text" placeholder="Nom d'utilisateur" class="form-control input-add-user"
+                          formControlName="username" [(ngModel)]="user.username" required minlength="3"
+                          maxlength="20" />
+
+                      <div class="alert-danger"
+                          *ngIf="!ecoleForm.controls['username'].valid && (ecoleForm.controls['username'].touched)">
+                          <div [hidden]="!ecoleForm.controls['username'].errors.required">
+                              username is required.
+                          </div>
+                          <div [hidden]="!ecoleForm.controls['username'].errors.minlength">
+                              username must be have 3 character length.
+                          </div>
+                          <div [hidden]="!ecoleForm.controls['username'].errors.maxlength">
+                              username must be have 20 character length.
+                          </div>
+                      </div>
+
+                  </div>
+
+                 
+                  <div class="form-group">
+                      <input type="text" placeholder="Nom " class="form-control input-add-user" formControlName="nom"
+                          [(ngModel)]="user.nom" />
+
+                      <div class="alert-danger"
+                          *ngIf="!ecoleForm.controls['nom'].valid && (ecoleForm.controls['nom'].touched)">
+                          <div [hidden]="!ecoleForm.controls['nom'].errors.required">
+                              nom is required.
+                          </div>
+                          <div [hidden]="!ecoleForm.controls['nom'].errors.minlength">
+                              nom must be have 3 character length.
+                          </div>
+                          <div [hidden]="!ecoleForm.controls['nom'].errors.maxlength">
+                              nom must be have 20 character length.
+                          </div>
+                      </div>
+
+                  </div>
+                 
+
+
+              </div>
+
+              <div class="container-formulaire-right">
+
+                  <div class="form-group">
+                      <input type="email" placeholder="Email" class="form-control input-add-user"
+                          formControlName="email" [(ngModel)]="user.email" required email />
+
+                      <div class="alert-danger"
+                          *ngIf="!ecoleForm.controls['email'].valid && (ecoleForm.controls['email'].touched)">
+                          <div [hidden]="!ecoleForm.controls['email'].errors.required">
+                              email is required.
+                          </div>
+                          <div [hidden]="!ecoleForm.controls['email'].errors.email">
+                              email must be a valid mail adresse
+                          </div>
+
+                      </div>
+
+                  </div>
+
+                  <div class="form-group">
+                      <input type="tel" maxlength="8" placeholder="Numéro de télèphone"
+                          class="form-control input-add-user" formControlName="telephone"
+                          [(ngModel)]="user.telephone" required tel minlength="8" />
+
+                      <div class="alert-danger"
+                          *ngIf="!ecoleForm.controls['telephone'].valid && (ecoleForm.controls['telephone'].touched)">
+                          <div [hidden]="!ecoleForm.controls['telephone'].errors.required">
+                              telephone is required.
+                          </div>
+                          <div [hidden]="!ecoleForm.controls['telephone'].errors.minlength">
+                              telephone must be have 8 character length.
+                          </div>
+                          <div [hidden]="!ecoleForm.controls['telephone'].errors.tel">
+                              telephone must be a phone number
+                          </div>
+                      </div>
+
+                  </div>
+
+
+
+              </div>
+
+          </div>
+
+          <div class="form-group1">
+
+              <select class="form-control input-add-user select-adresse" formControlName="adresse"
+                  [(ngModel)]="user.adresse" required>
+
+                  <option value="" disabled selected hidden>Adresse</option>
+                  <option *ngFor="let ad of adresseArray" [ngValue]="ad" [selected]=" user.adresse === ad">
+                      {{ad}}</option>
+              </select>
+
+              <div class="alert-danger"
+                  *ngIf="!ecoleForm.controls['adresse'].valid && (ecoleForm.controls['adresse'].touched)">
+                  <div [hidden]="!ecoleForm.controls['adresse'].errors.required">
+                      adresse is required.
+                  </div>
+              </div>
+
+          </div>
+
+          <div class="container-formulaire ">
+              <div class="container-formulaire-left">
+
+                  <div class="form-group">
+                      <div class="d-flex btn-add-user-display">
+
+                          <button class="  btn btn-upload-photo-user" (click)="gotoDetailUser(user.id)">
+                              Annuler
+                          </button>
+
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="container-formulaire-right">
+
+                  <div class="form-group">
+                      <div class="d-flex btn-add-user-display">
+
+                          <button class="btn btn-primary btn-block btn-add-user" type="submit"
+                              [disabled]="!ecoleForm.valid">
+                              Modifier
+                          </button>
+
+                      </div>
+
+                  </div>
+
+              </div>
+
+          </div>
+
+      </form>
+      
+  </div>
+
+</div>

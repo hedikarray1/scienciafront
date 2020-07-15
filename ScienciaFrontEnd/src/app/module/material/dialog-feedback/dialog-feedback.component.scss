@@ -1,0 +1,55 @@
+.titre-envoyer-feedback{
+    color: #005578;
+    font-size: xx-large;
+    font-weight: 500;
+    justify-content: flex-start ;
+    align-items:  flex-start ;
+}
+
+.btn-envoyer-feedback{
+  //  width: 10em;
+    border-radius: 0.5em;
+    background-color: #2091c0;
+    border-color: #2091c0;
+    color: #fff;
+}
+
+.form-field-envoyer-feedback{
+    width: 100%;
+}
+
+
+.input{
+    width: 97%;
+    background-color:  #ededed ;
+}
+
+.rating-star-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 20px;
+    padding-left: 10%;
+}
+
+.star {
+    font-size: 2rem;
+    color: #FFD700;
+  }
+
+  .container-rating {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 5% ;
+      padding: 0% 30% 0% 5%;
+      width: 100%;
+  }
+
+  .titre-evaluer-formateur{
+    color: #2091c0;
+    font-size: medium;
+    font-weight: 500;
+    justify-content: flex-start ;
+    align-items:  flex-start ;
+}

@@ -1,0 +1,265 @@
+.navbar-logo {
+
+  margin-top: -12px;
+  margin-bottom: -6px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 150px;
+  height: 100px;
+}
+
+.navbar-logo-container{
+  margin-right: 0px !important;
+}
+
+.bg-navbar {
+  background-color: #2091c0 !important;
+  padding: 0;
+}
+
+.navbar-icon-right {
+  height: 30px;
+  width: 30px;
+  margin: auto;
+}
+
+.active-navbar-icons-box,
+.navbar-icons-box-right:hover,
+.navbar-icons-box-right:focus {
+  background-color: #005578;
+}
+
+.dropdown-item-color:focus,
+.dropdown-item-color:hover {
+
+  background-color: #2091c0;
+}
+
+
+.nav-item-text:focus,
+.nav-item-text:hover {
+
+  background-color: #b5c858;
+}
+
+
+
+.active {
+    background-color: #b5c858;
+  }
+
+  
+.active2 {
+  background-color: #2091c0;
+}
+
+.nav-item-text {
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.nav-link-text {
+
+  font-size: large;
+  color: #fff !important ;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.navbar-nav-text {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -51px;
+}
+
+
+#backgroundimage {
+ background-image: url("../assets/background.jpg");
+  width: 100%;
+  height: 87vh;
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center;
+  background-color: #faf8f8;
+
+  overflow: auto;
+}
+
+
+#NObackgroundimage {
+   width: 100%;
+   height: 87vh;
+   position: relative;
+   background-color: #faf8f8;
+
+   overflow: auto;
+ }
+.login-page-container{
+  background-image: url("../assets/background.jpg");
+  width: 100%;
+  height: 100vh;
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center;
+  background-color: #faf8f8;
+  padding-top: 4%;
+  overflow: auto;
+}
+
+
+
+
+
+.notification-ovelay-panel > .notif_box:last-child {
+  margin-bottom: 0;
+}
+
+
+.notification-ovelay-panel {
+  background: #fff;
+    border: 1px solid #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: absolute;
+    right: -100px;
+    top: 10px;
+  
+    animation: gb__a 0.2s;
+   
+    animation-duration: 0.2s;
+   
+    animation-timing-function: ease;
+   
+    animation-delay: 0s;
+    
+    animation-iteration-count: 1;
+   
+    animation-fill-mode: none;
+   
+    animation-play-state: running;
+  
+    animation-name: gb__a;
+    z-index: 991;
+    line-height: normal;
+    outline: none;
+    transform: translateZ(0);
+    display: block;
+    border-radius: 8px;
+    margin-left: 12px;
+    width: 354px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(97.9vh - 62px - 100px);
+    min-height: 9vh;
+    padding: 3px;
+}
+
+.notif_box:hover {
+  background: #a7d1e2;
+}
+
+.notif_box {
+  border: 1px solid #c4c4c4;
+  padding: 18px 16px 10px;
+  margin-bottom: 3px;
+  background-color: #ececec;
+  border-radius: 6px;
+  
+}
+
+.active_notif {
+  background: lightgrey;
+}
+
+
+.notif-subBox {
+  overflow: hidden;
+  clear: both;
+}
+
+
+.circular--landscape-notif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: 11%;
+  height: 39.362px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #2091c070;
+  background-color: #2091c070;
+
+}
+
+.circular--landscape-notif img {
+  width: auto;
+  height: 100%;
+ 
+}
+
+
+.notif-info {
+  float: left;
+  padding: 0 0 0 15px;
+  width: 88%;
+  
+}
+
+
+.notif-info h5 {
+  font-size: 15px;
+  color: #05728f;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+.notif-info h4 {
+  font-size: 15px;
+  color: #05728f;
+  margin: 0 0 8px 0;
+}
+
+
+.notif-info h5 span {
+  font-size: 13px;
+  float: right;
+  color: #464646;
+  font-weight: 500;
+}
+
+.notif-info p {
+  font-size: 14px;
+  color: #989898;
+  margin: auto;
+  text-overflow: clip;
+}
+
+
+.msg-inbox-txt{
+  overflow: hidden;
+  text-overflow: ellipsis !important; 
+  margin: auto;
+  min-inline-size: max-content;
+    width: 260px;
+}
+
+
+
+.dropdown-position {
+  width: 100%;
+ 
+    background-color: #faf8f8;
+}
+
+.dropdown-item-color {
+  margin: 5px 0px;
+}
+
+.dropdown:hover .dropdown-position {display: block;}

@@ -1,0 +1,35 @@
+<h2 mat-dialog-title class="titre-envoyer-feedback">Envoyer un FeedBack sur une réservation</h2>
+
+<form class="form-add-formation" [formGroup]="feedBackForm" (ngSubmit)="onYesClick()" novalidate>
+<div mat-dialog-content>
+
+ 
+  <div class="form-field-envoyer-feedback">
+      <textarea  type="textarea"  
+      placeholder="Description"
+       rows="5" 
+       class="form-control input"
+        formControlName="message" 
+        required
+        > </textarea>
+        <div class="alert-danger"
+      *ngIf="!feedBackForm.controls['message'].valid && (feedBackForm.controls['message'].touched)">
+      <div [hidden]="!feedBackForm.controls['message'].errors.required">
+        ce champs est obligatoire
+      </div>
+    </div>
+    </div>
+    <div class="container-rating"> 
+      <h4 class="titre-evaluer-formateur">Evaluer formateur</h4>
+      <div class="rating-star-container">
+        <ngb-rating class="star" [(rate)]="currentRate" [max]="5" (rateChange)="ratingChanged($event)"   ></ngb-rating>
+      </div>
+  </div>
+
+</div>
+<div mat-dialog-actions align="end">
+ 
+  <button mat-button  (click)="onNoClick()">Annuler</button>
+  <button mat-button  type="submit" [disabled]="!feedBackForm.valid"  class="btn-envoyer-feedback" cdkFocusInitial>Envoyer</button>
+</div>
+</form>

@@ -1,0 +1,72 @@
+<div class="section-profile">
+
+  <div class="container-user-image">
+    <div class="subcontainer-user-image">
+
+      <div class="circular--landscape">
+        <img [src]="getLinkPicture()" (error)="changeSource($event)">
+      </div>
+      
+      <div class="container-modifier-image-user" (click)="openDialog()">
+        <i href="https://github.com/FortAwesome/Font-Awesome" 
+          class="fa fa-camera fa-2x icon-color" aria-hidden="true"></i>
+      </div>
+     
+      <div class="container-user-name">
+        <h2>{{userConnecte.nom}} {{userConnecte.prenom}}</h2>
+        <p>Type de compte : <b> {{userConnecte.role}} </b></p>
+      </div>
+
+    </div>
+  </div>
+  <div class="container-user-info">
+
+    
+    <ul class="ul-user-info">
+      <li>
+        <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-envelope fa-lg icon-color"
+            aria-hidden="true"></i>{{userConnecte.email}}</p>
+      </li>
+      <li>
+        <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-user fa-lg icon-color"
+            aria-hidden="true"></i>{{userConnecte.username}}</p>
+      </li>
+      <li>
+        <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-map-marker fa-lg icon-color"
+            aria-hidden="true"></i>{{userConnecte.adresse}}</p>
+      </li>
+      <li>
+        <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-phone-square fa-lg icon-color"
+            aria-hidden="true"></i>{{userConnecte.telephone}}</p>
+      </li>
+
+      <li *ngIf="userConnecte.role  != 'Ecole'">
+        <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-calendar fa-lg icon-color"
+            aria-hidden="true"></i>{{userConnecte.dateNaissance }}</p>
+      </li>
+    </ul>
+<!--
+    <div class="container-button-user">
+      <button class="" type="button" (click)="gotoModifierProfile()"><i
+          href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-pencil fa-lg icon-color"
+          aria-hidden="true"></i> Modifier information</button>
+      <button class="" type="button" (click)="gotoModifierProfilePassword()"><i
+            href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-pencil fa-lg icon-color"
+            aria-hidden="true"></i> Modifier mot de passe</button>  
+    </div>
+    -->
+    <div class="container-button-user">
+      <button class="btn-modif-user" type="button" title="Modifier information" (click)="gotoModifierProfile()"><i
+          href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-pencil fa-lg icon-color2"
+          aria-hidden="true"></i> </button>
+      <button class=" btn-modif-user" type="button" title="Modifier mot de passe"  (click)="gotoModifierProfilePassword()"><i
+          href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-key fa-lg icon-color2"
+          aria-hidden="true"></i> </button>
+   </div>
+
+  </div>
+
+
+
+
+</div>

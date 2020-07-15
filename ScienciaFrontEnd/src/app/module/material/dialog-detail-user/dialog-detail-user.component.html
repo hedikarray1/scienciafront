@@ -1,0 +1,47 @@
+<div class="section-profile">
+
+   <div class="container-user-image">
+     <div class="subcontainer-user-image">
+ 
+       <div class="circular--landscape">
+         <img [src]="getLinkPicture()" (error)="changeSource($event)">
+       </div>
+       <div class="container-user-name">
+         <h2>{{user.nom}} {{user.prenom}}</h2>
+   
+       </div>
+ 
+     </div>
+   </div>
+   <div class="container-user-info">
+ 
+     
+     <ul class="ul-user-info">
+       <li>
+         <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-envelope fa-lg icon-color"
+             aria-hidden="true"></i>{{user.email}}</p>
+       </li>
+       <li>
+         <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-map-marker fa-lg icon-color"
+             aria-hidden="true"></i>{{user.adresse}}</p>
+       </li>
+       <li>
+         <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-phone-square fa-lg icon-color"
+             aria-hidden="true"></i>{{user.telephone}}</p>
+       </li>
+ 
+       <li *ngIf="user.role  != 'Ecole'">
+         <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-calendar fa-lg icon-color"
+             aria-hidden="true"></i>{{user.dateNaissance }}</p>
+       </li>
+     </ul>
+
+    
+ 
+   </div>
+ 
+ 
+ 
+ 
+ </div>
+ 

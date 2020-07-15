@@ -1,0 +1,84 @@
+.section-reservation{
+   display: flex;
+   flex-direction: row;
+   padding-right: 50px;
+   padding-left: 50px;
+   padding-top: 20px;
+   background-color: #faf8f8;
+   align-items:  flex-end ;
+   justify-content: center ;
+  // height: -webkit-fill-available;
+}
+
+.reservation-formulaire{
+
+   width: 25%;
+   padding-bottom: 38px;
+   margin-left: 20px;
+   display: flex; 
+   flex-direction: column;
+}
+
+.form-reservation{
+   //justify-content: flex-end ;
+   align-self:  flex-end;
+   width: 90%;
+}
+
+.btn-reservation-display{
+   justify-content: flex-end ;
+}
+
+.titre-reservation{
+   color: #005578;
+   //font-size: larger;
+   font-weight: 500;
+   justify-content: flex-start ;
+}
+
+.btn-reservation{
+   width: 10em;
+   border-radius: 0.5em;
+   background-color: #2091c0;
+   border-color: #2091c0;
+   color: #fff;
+}
+
+
+.btn-annuler-reservation{
+   width: 10em;
+   border-radius: 0.5em;
+   background-color: #769baa;
+   border-color: #769baa;
+   color: #fff;
+}
+
+.input-reservation{
+   background-color:  #ededed ;
+}
+
+.image-container img {
+   width: 90%;
+}
+
+
+.button-container{
+   margin-left: 15px;
+}
+
+
+.ng-valid[required], .ng-valid.required  {
+   border-left: 5px solid #42A948; /* green */
+ }
+ 
+ .ng-invalid:not(form)  {
+   border-left: 5px solid #a94442; /* red */
+ }
+
+ 
+.container-totale {
+   display: flex ;
+   justify-content: space-between;
+   flex-direction: row;
+   border-bottom : 2px solid #2091c070;
+}

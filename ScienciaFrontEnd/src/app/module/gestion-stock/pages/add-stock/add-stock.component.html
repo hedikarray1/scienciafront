@@ -1,0 +1,129 @@
+<div class="section-add-stock">
+   
+  
+    <div class="add-stock-formulaire">
+  
+      <div class="container-titre">
+        <h1 class="titre-add-stock">Ajouter un composant</h1>
+      </div>
+    
+      <form class="form-add-stock" [formGroup]="stockForm" (ngSubmit)=" onSubmit()" novalidate>
+  
+  <div class="container-input">
+  
+        <div class="form-group">
+          <input type="text" 
+          placeholder="Nom du kit" 
+          class="form-control input-add-stock" 
+          formControlName="nom"
+            required 
+          />
+  
+          <div class="alert-danger" *ngIf="!stockForm.controls['nom'].valid && (stockForm.controls['nom'].touched)">
+            <div [hidden]="!stockForm.controls['nom'].errors.required">
+              ce champs est obligatoire
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <input type="number" 
+            min="0"
+            placeholder="Quantité" 
+            class="form-control input-add-stock" 
+            formControlName="quantite"
+              required 
+            />
+    
+            <div class="alert-danger" *ngIf="!stockForm.controls['quantite'].valid && (stockForm.controls['quantite'].touched)">
+              <div [hidden]="!stockForm.controls['quantite'].errors.required">
+                ce champs est obligatoire
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <select class="form-control input-add-stock"
+            formControlName="type"
+           
+            >
+              <option value="" disabled selected hidden>Type</option>
+              <option *ngFor="let tp of types" value="{{tp.nom}}">{{tp.nom}}</option>
+            </select>
+    
+            <div class="alert-danger" *ngIf="!stockForm.controls['type'].valid && (stockForm.controls['type'].touched)">
+              <div [hidden]="!stockForm.controls['type'].errors.required">
+               ce champs est obligatoire
+              </div>
+            </div>
+    
+          </div>
+
+          <div class="form-group">
+            <input type="number" 
+            min="0"
+            placeholder="Prix" 
+            class="form-control input-add-stock" 
+            formControlName="prix"
+              required 
+            />
+    
+            <div class="alert-danger" *ngIf="!stockForm.controls['prix'].valid && (stockForm.controls['prix'].touched)">
+              <div [hidden]="!stockForm.controls['prix'].errors.required">
+                ce champs est obligatoire
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <textarea type="textarea" 
+            rows="5"
+            placeholder="Description" 
+            class="form-control input-add-stock" 
+            formControlName="description"
+              required 
+            ></textarea>
+    
+            <div class="alert-danger" *ngIf="!stockForm.controls['description'].valid && (stockForm.controls['description'].touched)">
+              <div [hidden]="!stockForm.controls['description'].errors.required">
+                ce champs est obligatoire
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+        <div class="form-group">
+          <div class="d-flex btn-add-stock-display">
+            <div class="button-container">
+              <button class="btn   btn-annuler-add-stock" (click)="gotoListeStock()" >
+               Annuler
+              </button>
+            </div>
+
+            <div class="button-add-image-container">
+              <button class="btn   btn-add-image"  >
+                <img src="../../../../../assets/add-image-icon.png">
+                  Ajouter image
+              </button>
+              <input type="file"  
+              formControlName="photo"
+    accept="image/*"
+    (change)="onFileSelect($event)" 
+              />
+            </div>
+
+            <div class="button-container">
+              <button class="btn  btn-add-stock" type="submit" [disabled]="!stockForm.valid">
+                Ajouter
+              </button>
+            </div>
+          </div>
+  
+        </div>
+
+      </form>
+    </div>
+  
+  </div>
+  

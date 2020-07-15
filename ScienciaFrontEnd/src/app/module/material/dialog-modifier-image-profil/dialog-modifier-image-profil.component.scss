@@ -1,0 +1,38 @@
+.titre-envoyer-feedback{
+    color: #005578;
+    font-size: x-large;
+    font-weight: 500;
+    justify-content: flex-start ;
+    align-items:  flex-start ;
+}
+
+.btn-envoyer-feedback{
+  //  width: 10em;
+    border-radius: 0.5em;
+    background-color: #2091c0;
+    border-color: #2091c0;
+    color: #fff;
+}
+
+.form-field-envoyer-feedback{
+    width: 100%;
+}
+
+
+.input{
+    width: 97%;
+    background-color:  #ededed ;
+}
+
+.rating-star-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 20px;
+    padding-left: 10%;
+}
+
+.star {
+    font-size: 2rem;
+    color: #FFD700;
+  }

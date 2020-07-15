@@ -1,0 +1,81 @@
+label {
+    display: block;
+    margin-top: 10px;
+  }
+  .logo-image-login{
+    width: 400px;
+    height: 250px;
+    margin: 0 auto 0;
+    display: block;
+   
+  }
+
+  .btn-login{
+    width: 7.5em;
+    border-radius: 0.5em;
+    background-color: #2091c0;
+    border-color: #2091c0;
+    color: #fff;
+  }
+
+  .card-container.card {
+    max-width: 400px !important;
+    border-radius: 1em;
+    padding: 0 40px 0 40px;
+  }
+  
+  .card {
+    background-color: #2090c041;
+    padding: 20px 25px 30px;
+    margin: 0 auto 0;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  .link-container{
+    padding-top: 9px;
+  }
+
+  .container-btn-login{
+    margin-top: 35px;
+    margin-bottom: 21px;
+  }
+
+  .login-input{
+    color: #545454;
+    background-color: #edededb0 ;
+    border-color: #ededed ;
+    padding-left: 31px;
+  }
+
+  .title-login{
+    color: #005578;
+    font-size: larger;
+    font-weight: 500;
+  }
+
+  .link-text{
+    color: #1b8fbe ;
+    text-decoration: underline;
+  }
+
+  .hhh{
+    background-color : #005578;
+    background-color : #2091c0  ;
+    background-color : #b5c858 ;
+    background-color : #545454 ;
+    background-color : #ededed ;
+    background-color :#1b8fbe ;
+    background-color :#faf8f8 ;
+  }
+
+  .icon { 
+    padding: 12px; 
+    min-width: 40px; 
+    position: absolute; 
+    opacity: 60%;
+} 
+  

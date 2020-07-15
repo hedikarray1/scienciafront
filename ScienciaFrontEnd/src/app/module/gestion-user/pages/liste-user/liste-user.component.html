@@ -1,0 +1,34 @@
+<div class="section-list-user">
+
+  <div class="header-list-user">
+
+    <h1 class="titre-liste-user"></h1>
+    <div class="header-right-side">
+      <div class="image-add-user-container" (click)="gotoAddUser()">
+        <img src="../../../../../assets/add user.png" >
+      </div>
+      <div class="search-list-user">
+        <input type="text" placeholder="recherche" [(ngModel)]="searchText" class="form-control input-search-user" />
+      </div>
+    </div>
+  </div>
+
+  <div class="content-list-user">
+    
+  
+    <div class="card-user-info"  *ngFor="let user of users | filter:searchText" >
+        <div class="circular--landscape" (click)="goToDetaitUser(user.id)">
+            <img src="http://localhost:3000/image_user/{{user.photo}}"(error) ="changeSource($event)">
+          </div>
+      <div class="info-user" (click)="goToDetaitUser(user.id)">
+       
+        <h2 class="text-user-nom">{{user.nom}}  {{user.prenom}}</h2>
+        <h3 class="text-user-info">{{user.email}} </h3>
+        <h3 class="text-user-info">{{user.adresse}} </h3>
+        <h3 class="text-user-info"><strong>{{user.role}} </strong></h3>
+      </div>
+    </div>
+
+  </div>
+
+</div>

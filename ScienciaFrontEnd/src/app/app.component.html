@@ -1,0 +1,199 @@
+<div id="app">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-navbar" *ngIf="isLoggedIn">
+    <a class="navbar-brand navbar-logo-container" href="#">
+      <img class="navbar-logo" src="../assets/logo-sciencia-white.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed"
+      aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="userConnecte.role == 'Admin'">
+      <ul class="navbar-nav navbar-nav-text ">
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="home">
+          <a class="nav-link-text ">Accueil</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="gestionStock">
+          <a class="nav-link-text ">Gestion de stock</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="gestionFormation">
+          <a class="nav-link-text ">Gestion de formation</a>
+        </li>
+
+
+
+        <li class="nav-item nav-item-text dropdown" routerLinkActive="active" >
+          <a class="nav-link-text  dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="true">Gestion des utilisateurs</a>
+          <div class=" dropdown dropdown-menu dropdown-position ">
+            <a class="dropdown-item menu-item dropdown-item-color" routerLinkActive="active2"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="gestionUser/listeEmploye">Employées</a>
+            <a class="dropdown-item menu-item dropdown-item-color" routerLinkActive="active2"
+              [routerLinkActiveOptions]="{exact:true}" routerLink="gestionUser/listeFormateur">Formateurs</a>
+            <a class="dropdown-item menu-item dropdown-item-color" routerLinkActive="active2"
+              [routerLinkActiveOptions]="{exact: true}" routerLink="gestionUser/listeEcole">Ecoles</a>
+          </div>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="profile">
+          <a class="nav-link-text ">Profil</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="userConnecte.role == 'Employé'">
+      <ul class="navbar-nav navbar-nav-text ">
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="home">
+          <a class="nav-link-text ">Accueil</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="gestionStock">
+          <a class="nav-link-text ">Gestion de stock</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="gestionFormation">
+          <a class="nav-link-text ">Gestion de formation</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="gestionDemendeEmploye">
+          <a class="nav-link-text ">Gestion de demandes</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="profile">
+          <a class="nav-link-text ">Profil</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="userConnecte.role == 'Ecole'">
+      <ul class="navbar-nav navbar-nav-text ">
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="home">
+          <a class="nav-link-text ">Accueil</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="gestionFormationEcole">
+          <a class="nav-link-text ">Nos formations</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="gestionReservation">
+          <a class="nav-link-text ">Gestion de reservation</a>
+        </li>
+
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="profile">
+          <a class="nav-link-text ">Profil</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse" [class.collapse]="collapsed" id="navbarContent"
+      *ngIf="userConnecte.role == 'Formateur'">
+      <ul class="navbar-nav navbar-nav-text ">
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="home">
+          <a class="nav-link-text ">Accueil</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="gestionEmploi">
+          <a class="nav-link-text ">Gestion d'emploi</a>
+        </li>
+
+
+        <li class="nav-item nav-item-text dropdown " routerLinkActive="active">
+          <a class="nav-link-text  dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="true">Gestion des kits<span class="caret"></span></a>
+          <div class=" dropdown dropdown-menu dropdown-position">
+            <a class="dropdown-item menu-item dropdown-item-color" routerLinkActive="active2" [routerLinkActiveOptions]="{exact:
+              true}" routerLink="gestionDemendeKit/listKits">Kits</a>
+            <a class="dropdown-item menu-item dropdown-item-color" routerLinkActive="active2" [routerLinkActiveOptions]="{exact:
+              true}" routerLink="gestionDemendeKit/listDemande">Mes Demandes</a>
+          </div>
+        </li>
+
+
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="gestionReservationFormateur">
+          <a class="nav-link-text ">Gestion de demandes de reservation</a>
+        </li>
+        <li class="nav-item nav-item-text " routerLinkActive="active" routerLink="profile">
+          <a class="nav-link-text ">Profil</a>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-brand">
+      <ul class="navbar-nav ">
+        <li class="nav-item navbar-icons-box-right" routerLinkActive="active-navbar-icons-box" routerLink="messagerie">
+          <a class="nav-link" *ngIf="msgNotRead == 0">
+            <img class="navbar-icon-right" src="../assets/mail-white.png" alt="">
+          </a>
+          <a class="nav-link" *ngIf="msgNotRead != 0" matBadge="{{msgNotRead}}" matBadgeColor="warn">
+            <img class="navbar-icon-right" src="../assets/mail-white.png" alt="">
+          </a>
+        </li>
+        <li class="nav-item navbar-icons-box-right" [ngClass]="isOpen ? 'active-navbar-icons-box' : ''"
+          (clickOutside)="onClickedOutside($event)" (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin
+          #trigger="cdkOverlayOrigin">
+          <a class="nav-link" *ngIf="notifNotRead == 0">
+            <img class="navbar-icon-right" src="../assets/notifications-button-white.png" alt="">
+          </a>
+          <a class="nav-link" matBadge="{{notifNotRead}}" matBadgeColor="warn" *ngIf="notifNotRead != 0">
+            <img class="navbar-icon-right" src="../assets/notifications-button-white.png" alt="">
+          </a>
+        </li>
+
+
+        <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
+          <div class=" notification-ovelay-panel" #overlayNotif>
+
+            <div *ngIf="notifications.length == 0" class="notif_box">
+              <div class="notif-subBox">
+
+
+
+
+                <div class="notif-info">
+                  <h5> vous n'avez aucune notification <span></span></h5>
+                  <p> </p>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div *ngFor="let notif of notifications"
+              [ngClass]="notif.status !=0  ? 'notif_box ' : 'notif_box active_notif'"
+              (click)="goToRedirecteNotif(notif)">
+              <div class="notif-subBox">
+
+                <div class="circular--landscape-notif">
+                  <img src="http://localhost:3000/image_user/{{notif.sender.photo}}" (error)="changeSource($event)">
+                </div>
+
+
+                <div class="notif-info">
+                  <h5>{{notif.sender.nom}}
+                    {{notif.sender.prenom}}<span>{{notif.date  }}</span></h5>
+                  <p> {{notif.titre}} </p>
+
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+        </ng-template>
+        <li class="nav-item navbar-icons-box-right">
+          <a class="nav-link" href="/login" (click)="logout()">
+            <img class="navbar-icon-right" src="../assets/log-out-icon.png" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div *ngIf="isLoggedIn">
+    <div id="backgroundimage" *ngIf=" backgroundState">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div id="NObackgroundimage" *ngIf="!backgroundState">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="login-page-container" *ngIf="!isLoggedIn">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

@@ -1,0 +1,55 @@
+<div class="section-list-stock">
+
+   <div class="header-list-stock">
+ 
+     <h1 class="titre-liste-stock"></h1>
+     <div class="header-right-stock">
+       <div class="image-add-stock-container" (click)="goToAddType()">
+         <img src="../../../../../assets/new-kit.png">
+       </div>
+       <div class="search-list-stock">
+         <input type="text" placeholder="recherche" [(ngModel)]="searchText"  class="form-control input-search-stock" />
+       </div>
+     </div>
+   </div>
+ 
+   <div class="content-list-stock">
+ 
+     <div class="table-container">
+       <table>
+         <thead>
+           <tr class="">
+            
+             <th class="">Nom</th>
+           
+             <th class="icon-table-th"></th>
+             <th class="icon-table-th"></th>
+ 
+             
+           </tr>
+         </thead>
+         <tbody>
+           <tr class="row-table-stock"*ngFor="let tp of types | filter:searchText">
+            
+             <td class="">{{tp.nom}}</td>
+             
+           
+             <td class="icon-table-td"> 
+               <img class="img-stock-table" src="../../../../../assets/edit.png" alt="" (click)="goToModifierType(tp.id)">
+             </td>
+            <td class="icon-table-td"> 
+               <img class="img-stock-table" src="../../../../../assets/trash.png" (click)="openDialog(tp.id)" alt="">
+             </td>
+            
+           </tr>
+         </tbody>
+       </table>
+     </div>
+ 
+     
+ 
+ 
+   </div>
+ 
+ </div>
+ 

@@ -1,0 +1,311 @@
+<div class="section-list-reservation">
+
+  <div class="header-list-reservation">
+
+    <h1 class="titre-liste-reservation">Demande de kits</h1>
+    <div class="header-right-side">
+      <div class="search-list-reservation">
+        <input type="text" placeholder="recherche" [(ngModel)]="searchText"
+          class="form-control input-search-reservation" />
+      </div>
+    </div>
+  </div>
+
+
+  <mat-tab-group class="tab-group" mat-align-tabs="center" [selectedIndex]="0" animationDuration="700ms">
+    <mat-tab label="Nouveaux demandes ">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+        
+         <div *ngIf="demandeKitsEnCours.length== 0 ">
+            <div class="card-mes-reservation" >
+              <div class="info-mes-reservation-4">
+               
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune nouveau demande</h1>
+
+            </div>
+          </div>
+         </div>
+          <div *ngFor="  let res of demandeKitsEnCours | filter : searchText ;">
+            <div class="card-mes-reservation" >
+              <div class="info-mes-reservation-2">
+                <div class="formateur-info-mes-resevation">
+                  <div class="circular--landscape">
+                    <img [src]="getLinkPicture(res.formateur.photo)" (error)="changeSource($event)">
+                  </div>
+                  <h1 class="titre-formation-liste-reservation">{{res.formateur.nom}} {{res.formateur.prenom}}
+                  </h1>
+
+                </div>
+
+                <h1 class="info-date-liste-reservation" title="date">{{res.date_demande}}</h1>
+
+
+
+              </div>
+              <div class="info-mes-reservation-1">
+
+                <table>
+                  <thead>
+                    <tr class="">
+                      <th class="">Kit</th>
+                      <th class="">Quantite demande</th>
+                      <th class="">Quantite en stock</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr [ngClass]="res2.quantite <= res2.kit.quantite ? 'row-table-stock ' : 'row-table-stock-error'"
+                      *ngFor="  let res2 of res.kits">
+                      <td class="">{{res2.kit.nom}}</td>
+                      <td class="">{{res2.quantite}}</td>
+                      <td class="">{{res2.kit.quantite}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div class="info-mes-reservation-3">
+
+                <h1 class="info-date" title="date">{{res.prix}} Dinars</h1>
+                <div class="feedback-info-mes-resevation">
+
+
+
+                  <div class="container-button-accepter">
+                    <div class="d-flex btn-go-to-add-feedback-content">
+
+                      <button class="btn btn-refuser" (click)="openDialogRefuser(res)">
+                        Refuser
+                      </button>
+
+                    </div>
+                    <div class="d-flex btn-go-to-add-feedback-content" (click)="openDialogAccepter(res)">
+
+                      <button class="btn btn-accepter">
+                        Accepter
+                      </button>
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Les demandes acceptés">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="demandeKitsAccepter.length== 0 ">
+            <div class="card-mes-reservation" >
+              <div class="info-mes-reservation-4">
+               
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune demande accepté</h1>
+
+            </div>
+          </div>
+         </div>
+
+          <div *ngFor="  let res of demandeKitsAccepter | filter : searchText ;">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-2">
+                <div class="formateur-info-mes-resevation">
+                  <div class="circular--landscape">
+                    <img [src]="getLinkPicture(res.formateur.photo)" (error)="changeSource($event)">
+                  </div>
+                  <h1 class="titre-formation-liste-reservation">{{res.formateur.nom}} {{res.formateur.prenom}}
+                  </h1>
+                </div>
+                <h1 class="info-date-liste-reservation" title="date">{{res.date_demande}}</h1>
+                <p class="container-icon-status" *ngIf="res.etat == 1" title="Accepter">
+                  <i href="https://github.com/FortAwesome/Font-Awesome"
+                    class="fa fa-check-circle-o fa-2x icon-color-accepter" aria-hidden="true"></i>
+                </p>
+                <p class="container-icon-status" *ngIf="res.etat == -1" title="Refuser">
+                  <i href="https://github.com/FortAwesome/Font-Awesome"
+                    class="fa fa-times-circle-o fa-2x icon-color-refuser" aria-hidden="true"></i>
+                </p>
+              </div>
+              <div class="info-mes-reservation-1">
+                <table>
+                  <thead>
+                    <tr class="">
+                      <th class="">Kit</th>
+                      <th class="">Quantite demande</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="row-table-stock" *ngFor="let res2 of res.kits">
+                      <td class="">{{res2.kit.nom}}</td>
+                      <td class="">{{res2.quantite}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="info-mes-reservation-3">
+
+                <h1 class="info-date" title="date">{{res.prix}} Dinars</h1>
+                <div class="feedback-info-mes-resevation">
+
+
+
+                  <div class="container-button-accepter">
+
+                    <div class="d-flex btn-go-to-add-feedback-content">
+
+                      <button class="btn btn-refuser" (click)="openDialogInValider(res)">
+                        Annuler la demande
+                      </button>
+
+                    </div>
+                    <div class="d-flex btn-go-to-add-feedback-content" (click)="openDialogValider(res)">
+
+                      <button class="btn btn-accepter">
+                        Valider livraison
+                      </button>
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    
+    <mat-tab label="Les demandes refuser ">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="demandeKitsRefuser.length== 0 ">
+            <div class="card-mes-reservation" >
+              <div class="info-mes-reservation-4">
+               
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune demande refusé</h1>
+
+            </div>
+          </div>
+         </div>
+          <div *ngFor="  let res of demandeKitsRefuser | filter : searchText ;">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-2">
+                <div class="formateur-info-mes-resevation">
+                  <div class="circular--landscape">
+                    <img [src]="getLinkPicture(res.formateur.photo)" (error)="changeSource($event)">
+                  </div>
+                  <h1 class="titre-formation-liste-reservation">{{res.formateur.nom}} {{res.formateur.prenom}}
+                  </h1>
+                </div>
+                <h1 class="info-date-liste-reservation" title="date">{{res.date_demande}}</h1>
+                <p class="container-icon-status" *ngIf="res.etat == 1" title="Accepter">
+                  <i href="https://github.com/FortAwesome/Font-Awesome"
+                    class="fa fa-check-circle-o fa-2x icon-color-accepter" aria-hidden="true"></i>
+                </p>
+                <p class="container-icon-status" *ngIf="res.etat == -1" title="Refuser">
+                  <i href="https://github.com/FortAwesome/Font-Awesome"
+                    class="fa fa-times-circle-o fa-2x icon-color-refuser" aria-hidden="true"></i>
+                </p>
+              </div>
+              <div class="info-mes-reservation-1">
+                <table>
+                  <thead>
+                    <tr class="">
+                      <th class="">Kit</th>
+                      <th class="">Quantite demande</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="row-table-stock" *ngFor="let res2 of res.kits">
+                      <td class="">{{res2.kit.nom}}</td>
+                      <td class="">{{res2.quantite}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="info-mes-reservation-prix">
+                <h1 class="info-date" title="date">{{res.prix}} Dinars</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Les demandes validés ">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="demandeKitsValider.length== 0 ">
+            <div class="card-mes-reservation" >
+              <div class="info-mes-reservation-4">
+               
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune demande Validé</h1>
+
+            </div>
+          </div>
+         </div>
+          <div *ngFor="  let res of demandeKitsValider | filter : searchText ;">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-2">
+                <div class="formateur-info-mes-resevation">
+                  <div class="circular--landscape">
+                    <img [src]="getLinkPicture(res.formateur.photo)" (error)="changeSource($event)">
+                  </div>
+                  <h1 class="titre-formation-liste-reservation">{{res.formateur.nom}} {{res.formateur.prenom}}
+                  </h1>
+                </div>
+                <h1 class="info-date-liste-reservation" title="date">{{res.date_demande}}</h1>
+                <p class="txt-status-validation icon-color-accepter" *ngIf="res.etat_livraison == 1" title="Accepter">
+                    Livraison validé
+                </p>
+                <p class="txt-status-validation icon-color-refuser" *ngIf="res.etat_livraison == -1" title="Accepter">
+                  Livraison annulé
+              </p>
+                <p class="txt-status-validation icon-color-encours" *ngIf="res.etat_livraison == 0" title="encours">
+                  Livraison non validé  
+                </p>
+              </div>
+              <div class="info-mes-reservation-1">
+                <table>
+                  <thead>
+                    <tr class="">
+                      <th class="">Kit</th>
+                      <th class="">Quantite demande</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="row-table-stock" *ngFor="let res2 of res.kits">
+                      <td class="">{{res2.kit.nom}}</td>
+                      <td class="">{{res2.quantite}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="info-mes-reservation-prix">
+                <h1 class="info-date" title="date">{{res.prix}} Dinars</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+
+
+</div>

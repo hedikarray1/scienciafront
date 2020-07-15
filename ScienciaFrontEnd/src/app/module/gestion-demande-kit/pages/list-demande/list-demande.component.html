@@ -1,0 +1,152 @@
+<div class="section-list-stock">
+
+  <div class="header-list-stock">
+
+    <h1 class="titre-liste-stock">Demande de kits</h1>
+    <div class="header-right-stock">
+      <div class="search-list-stock">
+        <input type="text" placeholder="recherche" [(ngModel)]="searchText" class="form-control input-search-stock" />
+      </div>
+    </div>
+  </div>
+
+  <mat-tab-group class="tab-group" mat-align-tabs="center" [selectedIndex]="0" animationDuration="700ms">
+    <mat-tab label="Nouveaux demandes ">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+
+          <div *ngIf="demandeKitsEncours.length== 0 ">
+            <div class="card-mes-reservation">
+              <div class="info-mes-reservation-4">
+
+
+                <h1 class="info-date-liste-reservation-2" title="date">aucune nouveau demande</h1>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div *ngFor="  let res of demandeKitsEncours | filter : searchText ;">
+            <div class="card-mes-reservation" >
+
+              <div class="info-mes-reservation-1">
+                <h1 class="titre-formation-liste-reservation">Demande des kits </h1>
+                <h1 class="info-date-liste-reservation" title="date">{{res.date_demande}}</h1>
+
+
+                <p class="container-icon-status" title="En cours">
+                  <i href="https://github.com/FortAwesome/Font-Awesome"
+                    class="fa fa-circle-o-notch fa-spin   fa-fw fa-2x icon-color-encours" aria-hidden="true"></i>
+                </p>
+
+
+              </div>
+              <div class="container-table-kits">
+                <table>
+                  <thead>
+                    <tr class="">
+                      <th class="">Composant</th>
+                      <th class="">Quantite demande</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="row-table-stock" *ngFor="let res2 of res.kits">
+                      <td class="">{{res2.kit.nom}}</td>
+                      <td class="">{{res2.quantite}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="info-mes-reservation-3">
+                <h1 class="info-date" title="date">{{res.prix}} Dinars</h1>
+
+                <div class="feedback-info-mes-resevation">
+
+                
+
+                  <div class="container-button-accepter">
+                    <div class="d-flex btn-go-to-add-feedback-content">
+
+                      <button class="btn btn-refuser" (click)="openDialogAnnuler(res)" >
+                        Annuler demande
+                      </button>
+
+                    </div>
+                   
+                  </div>
+
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Historiques des demandes ">
+      <div class="content-list-reservation">
+        <div class="content-left-list-reservation">
+          <div *ngFor="  let res of demandeKits | filter : searchText ;">
+            <div class="card-mes-reservation"*ngIf="res.etat != 0" >
+
+              <div class="info-mes-reservation-1">
+                <div class="formateur-info-mes-resevation" *ngIf="res.id_employe != 0">
+                  <div class="circular--landscape">
+                    <img [src]="getLinkPicture(res.employe.photo)" (error)="changeSource($event)">
+                  </div>
+                  <h1 class="titre-formation-liste-reservation">{{res.employe.nom}} {{res.employe.prenom}}
+                  </h1>
+                </div>
+                <h1 class="titre-formation-liste-reservation" *ngIf="res.id_employe == 0">Demande des kits </h1>
+                <h1 class="info-date-liste-reservation-33" title="date">{{res.date_demande}}</h1>
+
+                <p class="container-icon-status-2" *ngIf="res.etat == 1" title="Accepter">
+                  <i href="https://github.com/FortAwesome/Font-Awesome"
+                    class="fa fa-check-circle-o fa-2x icon-color-accepter" aria-hidden="true"></i>
+                </p>
+
+                <p class="container-icon-status-2" *ngIf="res.etat == -1" title="Refuser">
+                  <i href="https://github.com/FortAwesome/Font-Awesome"
+                    class="fa fa-times-circle-o fa-2x icon-color-refuser" aria-hidden="true"></i>
+                </p>
+
+              </div>
+
+
+              <div class="container-table-kits">
+
+                <table>
+                  <thead>
+                    <tr class="">
+                      <th class="">Kit</th>
+                      <th class="">Quantite demande</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="row-table-stock" *ngFor="let res2 of res.kits">
+                      <td class="">{{res2.kit.nom}}</td>
+                      <td class="">{{res2.quantite}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div class="info-mes-reservation-prix">
+                <h1 class="info-date" title="date">{{res.prix}} Dinars</h1>
+
+               
+
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

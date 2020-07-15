@@ -1,0 +1,59 @@
+
+.btn-supprimer{
+   //  width: 10em;
+     border-radius: 0.5em;
+     background-color: #2091c0;
+     border-color: #2091c0;
+     color: #fff;
+ }
+
+ .titre-supprimer{
+   color: #005578;
+   font-size: x-large;
+   font-weight: 500;
+}
+
+.subtitre-supprimer{
+   color: #0174a5;
+   font-size: medium;
+   font-weight: 400;
+}
+
+
+.btn-envoyer-feedback{
+   //  width: 10em;
+     border-radius: 0.5em;
+     background-color: #2091c0;
+     border-color: #2091c0;
+     color: #fff;
+ }
+ 
+ .titre-envoyer-feedback{
+   color: #005578;
+   font-size: x-large;
+   font-weight: 500;
+   justify-content: flex-start ;
+   align-items:  flex-start ;
+}
+
+.form-add-formation {
+   width: 300px;
+}
+
+.titre-reservation{
+   color: #005578;
+   //font-size: larger;
+   font-weight: 500;
+   justify-content: flex-start ;
+}
+
+
+.input-reservation{
+ 
+   background-color:  #ededed ;
+}
+
+.form-group {
+   padding-left: 10%;
+   width: 90%;
+}

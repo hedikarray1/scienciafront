@@ -1,0 +1,29 @@
+<h2 mat-dialog-title class="titre-envoyer-feedback">Validation Formation</h2>
+
+<form class="form-add-formation" [formGroup]="validationForm" (ngSubmit)="onYesClick()" novalidate>
+<div mat-dialog-content>
+
+   <div class="form-group">
+      <label class="titre-reservation" >Nombre des enfants</label>
+      <input type="number" min="10" max="30" placeholder="Nombre des enfants"
+        class="form-control input-reservation"
+        formControlName="nbr_enfants"
+        [(ngModel)]="data.reservation.nbr_enfants"
+        required 
+        />
+
+        <div class="alert-danger" *ngIf="!validationForm.controls['nbr_enfants'].valid && (validationForm.controls['nbr_enfants'].touched)">
+          <div [hidden]="!validationForm.controls['nbr_enfants'].errors.required">
+            ce champs est obligatoire
+          </div>
+        </div>
+    </div>
+ 
+
+</div>
+<div mat-dialog-actions align="end">
+ 
+  <button mat-button  (click)="onNoClick()">Annuler</button>
+  <button mat-button  type="submit" [disabled]="!validationForm.valid" [mat-dialog-close]="true"  class="btn-envoyer-feedback" cdkFocusInitial>Valider</button>
+</div>
+</form>

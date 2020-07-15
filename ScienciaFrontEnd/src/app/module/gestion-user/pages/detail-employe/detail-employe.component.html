@@ -1,0 +1,106 @@
+<div class="section-profil" >
+
+   <div class="container-profile-box ">
+ 
+     <div class="container-user-image">
+       <div class="subcontainer-user-image">
+ 
+         <div class="circular--landscape">
+           <img [src]="getLinkPicture()" (error)="changeSource($event)">
+         </div>
+ 
+         <div class="container-modifier-image-user" (click)="openDialogUpload()">
+           <i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-camera fa-2x icon-color"
+             aria-hidden="true"></i>
+         </div>
+ 
+         <div class="container-user-name">
+           <h2>{{user.nom}} {{user.prenom}}</h2>
+           <p>Type de compte : <b> {{user.role}} </b></p>
+         </div>
+ 
+       </div>
+     </div>
+     <div class="container-user-info">
+ 
+       <ul class="ul-user-info">
+         <li>
+           <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-envelope fa-lg icon-color"
+               aria-hidden="true"></i>{{user.email}}</p>
+         </li>
+         <li>
+           <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-user fa-lg icon-color"
+               aria-hidden="true"></i>{{user.username}}</p>
+         </li>
+         <li>
+           <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-map-marker fa-lg icon-color"
+               aria-hidden="true"></i>{{user.adresse}}</p>
+         </li>
+         <li>
+           <p><i href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-phone-square fa-lg icon-color"
+               aria-hidden="true"></i>{{user.telephone}}</p>
+         </li>
+ 
+        
+ 
+       </ul>
+ 
+       <div class="container-button-user">
+         <button class="btn-modif-user" type="button" title="Modifier information" (click)="gotoModifierUser(user.id)"><i
+             href="https://github.com/FortAwesome/Font-Awesome" class="fa fa-pencil fa-lg icon-color2"
+             aria-hidden="true"></i> </button>
+         <button class=" btn-modif-user" type="button" title="Modifier mot de passe"
+           (click)="gotoModifierPasswordUser(user.id)"><i href="https://github.com/FortAwesome/Font-Awesome"
+             class="fa fa-key fa-lg icon-color2" aria-hidden="true"></i> </button>
+         <button class="btn-modif-user" type="button" title="Supprimer utilisateur"
+           (click)="openDialogSupprimer(user.id)"><i href="https://github.com/FortAwesome/Font-Awesome"
+             class="fa fa-trash fa-lg icon-color2" aria-hidden="true"></i> </button>
+         <button class="btn-modif-user" type="button" title="déactive utilisateur" (click)="openDialogBloquer(user.id)"
+           *ngIf="user.etat == 'active'"><i href="https://github.com/FortAwesome/Font-Awesome"
+             class="fa fa-lock fa-lg icon-color2" aria-hidden="true"></i> </button>
+ 
+         <button class="btn-modif-user" type="button" title="activer utilisateur" (click)="openDialogDebloquer(user.id)"
+           *ngIf="user.etat != 'active'"><i href="https://github.com/FortAwesome/Font-Awesome"
+             class="fa fa-unlock fa-lg icon-color2" aria-hidden="true"></i> </button>
+ 
+       </div>
+ 
+     </div>
+ 
+ 
+ 
+ 
+ 
+   </div>
+ 
+   <div class="container-historique-profil">
+ 
+   
+ 
+     <div class="tab-container" *ngIf="demandeKitEmployeEtat">
+       <h1>demande kit </h1>
+     </div>
+ 
+    
+     <div class="tab-container" *ngIf="historiqueStockEtat">
+       <h1>Historique stock </h1>
+     </div>
+ 
+   </div>
+ 
+   <div id="mySidenav" class="sidenav" >
+ 
+ 
+     <a class="demande-kit-employe"
+       [ngClass]="!demandeKitEmployeEtat ? 'demande-kit-employe ' : 'demande-kit-employe active'"
+       (click)="showDemandeKitEmploye()">Demande kits</a>
+     <a class="historique-stock" [ngClass]="!historiqueStockEtat ? 'historique-stock ' : 'historique-stock active'"
+       (click)="showHistoriqueStock()">Historique stock</a>
+ 
+   </div>
+ 
+ 
+ </div>
+ 
+ 
+ 

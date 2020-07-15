@@ -1,0 +1,406 @@
+.section-messagerie {
+  display: flex;
+  flex-direction: row;
+  
+  background-color: #faf8f8;
+
+  justify-content: center;
+  overflow: auto;
+}
+
+.container-messagerie {
+  background-color: #faf8f8;
+  width: 100%;
+
+}
+
+img {
+  max-width: 100%;
+}
+
+.inbox_people {
+  background: #f8f8f8 none repeat scroll 0 0;
+  float: left;
+  overflow: hidden;
+  width: 25%;
+  border-right: 1px solid #c4c4c4;
+}
+
+.inbox_msg {
+  height: 87vh;
+  border: 1px solid #c4c4c4;
+  clear: both;
+  overflow: hidden;
+}
+
+.top_spac {
+  margin: 20px 0 0;
+}
+
+
+.recent_heading {
+  float: left;
+  width: 40%;
+}
+
+.srch_bar {
+  display: inline-block;
+  text-align: right;
+  width: 60%;
+  //padding:
+}
+
+.headind_srch {
+  padding: 4vh 29px 10px 20px;
+  overflow: hidden;
+  height: 10vh;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.recent_heading h4 {
+  color: #05728f;
+  font-size: 21px;
+  margin: auto;
+}
+
+.srch_bar input {
+  border: 1px solid #cdcdcd;
+  border-width: 0 0 1px 0;
+  width: 80%;
+  padding: 2px 0 4px 6px;
+  background: none;
+}
+
+.srch_bar .input-group-addon button {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  padding: 0;
+  color: #707070;
+  font-size: 18px;
+}
+
+.srch_bar .input-group-addon {
+  margin: 0 0 0 -27px;
+}
+
+.chat_ib h5 {
+  font-size: 15px;
+  color: #05728f;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+.chat_ib h4 {
+  font-size: 15px;
+  color: #05728f;
+  margin: 0 0 8px 0;
+}
+
+
+.chat_ib h5 span {
+  font-size: 13px;
+  float: right;
+  color: #464646;
+  font-weight: 500;
+}
+
+.chat_ib p {
+  font-size: 14px;
+  color: #989898;
+  margin: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+    width: 260px;
+    max-width: 260px;
+}
+
+.msg-inbox-txt-not-read {
+  color: rgb(10, 10, 10) !important; 
+}
+
+.chat_img {
+  float: left;
+  width: 11%;
+}
+
+.chat_ib {
+  float: left;
+  padding: 0 0 0 15px;
+  width: 88%;
+  
+}
+
+.margin_top_username_recherche {
+  margin-top: 3% ;
+}
+
+
+.headind_msg_chat {
+  padding: 0.8vh 0px 0vh 20px;
+  overflow: hidden;
+  border-bottom: 1px solid #c4c4c4;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  height: 10vh;
+}
+
+.chat_img2 {
+ width: 5.5%;
+  
+}
+
+
+
+.chat_username {
+  float: left;
+  width: 40%;
+  padding: 2.5vh 0px 1vh 10px;
+}
+
+.chat_username h4 {
+  color: #05728f;
+  font-size: 21px;
+  margin: auto;
+}
+
+
+.chat_ib2 {
+display: flex;
+flex-direction: column;
+align-content: center;
+align-items: center;
+  padding: 0 0 0 15px;
+}
+
+.chat_people {
+  overflow: hidden;
+  clear: both;
+}
+
+.chat_list {
+  border-bottom: 1px solid #c4c4c4;
+  border-top: 1px solid #c4c4c4;
+  padding: 18px 16px 10px;
+  margin-bottom: 3px;
+  background-color: #ececec;
+}
+
+
+.chat_list:hover {
+  background: #a7d1e2;
+}
+
+.inbox_chat {
+  height: 77vh;
+  overflow-y: scroll;
+}
+
+.active_chat {
+  background: lightgrey;
+}
+.incoming_msg {
+  margin-top: 10px;
+}
+
+.incoming_msg_img {
+  display: inline-block;
+  width: 4%;
+}
+
+.received_msg {
+  display: inline-block;
+  padding: 0 0 0 10px;
+  vertical-align: top;
+  width: 92%;
+}
+
+.stylish-input-group{
+  padding-right: 20px;
+}
+
+
+.time_date_in {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 0;
+  text-align: start;
+}
+
+
+.time_date_out {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 0;
+  text-align: end;
+}
+
+.received_withd_msg {
+  max-width: 45%;
+}
+
+.mesgs {
+  float: left;
+  width: 75%;
+}
+
+.sent_msg p {
+  background: rgb(232, 241, 167) none repeat scroll 0 0;
+  border-radius: 3px;
+  font-size: 14px;
+  margin: 0;
+  color: rgb(10, 10, 10);
+  padding: 5px 10px 5px 12px;
+  display:inline-block;
+  
+}
+
+
+.received_withd_msg p {
+  background: #ADE2F8 none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #000000;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 10px 5px 12px;
+  // width: 100%;
+  display:inline-block;
+ 
+}
+
+.outgoing_msg {
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.sent_msg {
+  float: right;
+  max-width: 50%;
+  text-align-last: end;
+}
+
+.input_msg_write input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 96%;
+}
+
+.input_msg_write textarea {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 96%;
+}
+
+.type_msg {
+  border-top: 1px solid #c4c4c4;
+  position: relative;
+  padding: 0px 16px 0px 25px;
+}
+
+.msg_send_btn {
+  background: #05728f none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 20px;
+  top: 11px;
+  width: 33px;
+}
+
+.messaging {
+ 
+}
+
+.msg_history {
+ // overflow-y: scroll;
+  height: 70vh;
+  overflow-y: auto;
+  padding: 20px 20px 0px 25px;
+}
+
+.msg-inbox-txt{
+  overflow: hidden;
+  text-overflow: ellipsis !important; 
+  margin: auto;
+  min-inline-size: max-content;
+    width: 260px;
+}
+
+
+.circular--landscape-msgInBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: 11%;
+  height: 39.362px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #2091c070;
+  background-color: #2091c070;
+
+}
+
+.circular--landscape-msgInBox img {
+  width: auto;
+  height: 100%;
+ 
+}
+
+
+
+.circular--landscape-userChat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: 5.5%;
+  height: 63.487px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #2091c070;
+  background-color: #2091c070;
+
+}
+
+.circular--landscape-userChat img {
+  width: auto;
+  height: 100%;
+ 
+}
+
+
+.circular--landscape-incomminMsg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: 4%;
+  height:45.150px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #2091c070;
+  background-color: #2091c070;
+
+}
+
+.circular--landscape-incomminMsg img {
+  width: auto;
+  height: 100%;
+ 
+}
+
+.invisible {
+  display: none ;
+}

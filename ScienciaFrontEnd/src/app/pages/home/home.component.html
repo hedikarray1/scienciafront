@@ -1,0 +1,78 @@
+<div class="section-afficher-emploi">
+  <button (click)="generatePdf()">Open PDF</button>
+  <div class="invisible-display">
+    <div class="facture-page" id="exportthis">
+      <div class="container-logo">
+        <img src="../../../assets/logo_final.png">
+        <div class="info-facture-header">
+          <h4 class="no-margin text-align-end"><b>Facture</b></h4>
+          <h5 class="no-margin text-align-end"><b>Réf : FA2003-0033</b></h5>
+          <h6 class="no-margin text-align-end">Date facturation : 20/03/2020</h6>
+          <h6 class="no-margin text-align-end">Date échéance : 21/03/2020</h6>
+        </div>
+      </div>
+      <div class="container-adresse">
+        <h5 class="no-margin text-width"> Emetteur : </h5>
+        <h5 class="no-margin text-width"> Adressé à :</h5>
+      </div>
+      <div class="container-adresse">
+        <div class="section-emetteur">
+          <h4 class="no-margin"> <b>Sciencia</b></h4>
+          <h6 class="no-margin">14, rue Ahmed Tlil ,Menzah 6 - Tunisie</h6>
+          <br>
+          <h6 class="no-margin">Tél : +216 54 757 563</h6>
+          <h6 class="no-margin">Email : contact@sciencia.tn</h6>
+          <h6 class="no-margin">Web : www.sciencia.tn</h6>
+        </div>
+        <div class="section-adresse-facture">
+          <h4 class="no-margin"><b>Ecole</b></h4>
+          <h5 class="no-margin">formation </h5>
+        </div>
+      </div>
+      <div class="container-table">
+        <h5 class="no-margin text-align-end"> Mantants exprimés en Dinars tunisiens </h5>
+        <table>
+          <thead>
+            <tr class="">
+              <th class="th-désignation text-align-start">désignation</th>
+              <th class="text-align-center">TVA</th>
+              <th class="text-align-center">P.U.HT</th>
+              <th class="text-align-center">Qté</th>
+              <th class="th-totale text-align-center">Totale HT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-align-start">une formation robotique pour 20 Enfant</td>
+              <td class="text-align-end"> 19%</td>
+              <td class="text-align-end"> 20</td>
+              <td class="text-align-end"> 50</td>
+              <td class="text-align-end"> 1000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="container-footer">
+        <h5 class="no-margin "> <b>Conditions de réglement : </b> A réception</h5>
+        <div class="section-totale">
+          <div class="ligne-totale">
+            <h5 class="no-margin ">Totale HT</h5>
+            <h5 class="no-margin ">1000</h5>
+          </div>
+          <div class="ligne-totale">
+            <h5 class="no-margin ">Totale TVA 19%</h5>
+            <h5 class="no-margin ">190</h5>
+          </div>
+          <div class="ligne-totale">
+            <h5 class="no-margin ">Timbre fiscal</h5>
+            <h5 class="no-margin ">0.60</h5>
+          </div>
+          <div class="ligne-totale background-totale-finale">
+            <h5 class="no-margin ">Totale TTC</h5>
+            <h5 class="no-margin ">1190.60</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="section-add-stock">
+   
+  
+   <div class="add-stock-formulaire">
+ 
+    
+     <form class="form-add-stock" [formGroup]="typeForm" (ngSubmit)=" onSubmit()" novalidate>
+       <div class="form-group">
+         <input type="text" 
+         placeholder="Nom du type" 
+         class="form-control input-add-stock" 
+         formControlName="nom"
+           required 
+         />
+         <div class="alert-danger" *ngIf="!typeForm.controls['nom'].valid && (typeForm.controls['nom'].touched)">
+           <div [hidden]="!typeForm.controls['nom'].errors.required">
+             ce champs est obligatoire
+           </div>
+         </div>
+       </div>
+       <div class="form-group">
+         <div class="d-flex btn-add-stock-display">
+           <div class="button-container">
+             <button class="btn   btn-annuler-add-stock" (click)="gotoListeType()" >
+              Annuler
+             </button>
+           </div>
+           <div class="button-container">
+             <button class="btn  btn-add-stock" type="submit" [disabled]="!typeForm.valid">
+               Ajouter
+             </button>
+           </div>
+         </div>
+ 
+       </div>
+
+     </form>
+   </div>
+ 
+ </div>
+ 

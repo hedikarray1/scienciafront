@@ -1,0 +1,68 @@
+<div class="section-list-stock">
+
+   <div class="header-list-stock">
+ 
+     <h1 class="titre-liste-stock">Gestion des FeedBack</h1>
+     <div class="header-right-stock">
+       <div class="search-list-stock">
+         <input type="text" placeholder="recherche" [(ngModel)]="searchText" class="form-control input-search-stock" />
+       </div>
+     </div>
+   </div>
+ 
+   <div class="content-list-feedback">
+ 
+ 
+     <div class="card-feedback" *ngFor=" let res of feedBacks | filter:searchText ">
+ 
+       <div class="container-info-ecole-feedback">
+         <div class="container-image-ecole-feedback">
+           <div class="circular--landscape">
+             <img [src]="getLinkPicture(res.ecole.photo)" (error)="changeSource($event)">
+           </div>
+           <h1>{{res.ecole.nom}} </h1>
+ 
+         </div>
+ 
+         <div class="container-date-feedback">
+ 
+           <h1 class="info-date-feedback" title="date">{{res.date}}</h1>
+ 
+         </div>
+ 
+       </div>
+ 
+ 
+       <div class="container-message-feedback">
+         <h2 class="message-feedback-txt">{{res.message}} </h2>
+ 
+       </div>
+ 
+       <div class="container-info-reservation">
+          <div class="container-image-formateur-feedback">
+             <div class="circular--landscape-2">
+               <img [src]="getLinkPicture(res.reservation.formateur.photo)" (error)="changeSource($event)">
+             </div>
+             <h1>{{res.reservation.formateur.nom}} {{res.reservation.formateur.prenom}}</h1>
+   
+           </div>
+           <div class="container-info-formation-feedback">
+              <ul>
+                 <li>
+                   <h2 class="info-formation-txt">{{res.reservation.formation.nom}} </h2>
+                 </li>
+                 <li>
+                   <h2 class="info-formation-txt">{{res.reservation.nbr_enfants}} Enfants</h2>
+                 </li>
+                 <li>
+                   <h2 class="info-formation-txt">{{res.reservation.date_formation}}</h2>
+                 </li>
+              </ul>
+           </div>
+        
+       </div>
+ 
+     </div>
+   </div>
+ </div>
+ 

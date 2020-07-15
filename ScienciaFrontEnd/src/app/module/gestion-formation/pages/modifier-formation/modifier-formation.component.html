@@ -1,0 +1,105 @@
+<div class="section-add-formation">
+
+
+    <div class="add-formation-formulaire">
+      
+      <div class="container-left">
+        <h1 class="titre-add-formation">Ajouter une Formation</h1>
+        <img class="image-bg-add-formation" src="../../../../../assets/formation.png">
+      </div>
+    
+      <form class="form-add-formation" [formGroup]="formationForm" (ngSubmit)=" onSubmit()" novalidate>
+  
+  
+  
+        <div class="form-group">
+          <input type="text" placeholder="Nom du formation" [(ngModel)]="formation.nom" class="form-control input-add-formation" formControlName="nom"
+            required />
+  
+          <div class="alert-danger"
+            *ngIf="!formationForm.controls['nom'].valid && (formationForm.controls['nom'].touched)">
+            <div [hidden]="!formationForm.controls['nom'].errors.required">
+              ce champs est obligatoire
+            </div>
+          </div>
+        </div>
+  
+      
+  
+        <div class="form-group">
+          <select class="form-control input-add-formation" formControlName="type" [(ngModel)]="formation.type" required>
+            <option value="" disabled selected hidden>Type</option>
+            <option *ngFor="let ty of typeArray"[ngValue]="ty" [selected]=" formation.type === ty" >{{ty}}</option>
+          
+          </select>
+  
+          <div class="alert-danger"
+            *ngIf="!formationForm.controls['type'].valid && (formationForm.controls['type'].touched)">
+            <div [hidden]="!formationForm.controls['type'].errors.required">
+              ce champs est obligatoire
+            </div>
+          </div>
+  
+        </div>
+
+        <div class="form-group">
+          <input type="number" min="0" placeholder="Durée " [(ngModel)]="formation.duree" class="form-control input-add-formation"
+            formControlName="duree" required />
+  
+          <div class="alert-danger"
+            *ngIf="!formationForm.controls['duree'].valid && (formationForm.controls['duree'].touched)">
+            <div [hidden]="!formationForm.controls['duree'].errors.required">
+              ce champs est obligatoire
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <input type="number" min="0" placeholder="Prix " [(ngModel)]="formation.prix_enfant_heure" class="form-control input-add-formation"
+            formControlName="prix_enfant_heure" required />
+  
+          <div class="alert-danger"
+            *ngIf="!formationForm.controls['prix_enfant_heure'].valid && (formationForm.controls['prix_enfant_heure'].touched)">
+            <div [hidden]="!formationForm.controls['prix_enfant_heure'].errors.required">
+              ce champs est obligatoire
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <textarea type="textarea" rows="5" placeholder="Description" [(ngModel)]="formation.description" class="form-control input-add-formation"
+            formControlName="description" required></textarea>
+  
+          <div class="alert-danger"
+            *ngIf="!formationForm.controls['description'].valid && (formationForm.controls['description'].touched)">
+            <div [hidden]="!formationForm.controls['description'].errors.required">
+              ce champs est obligatoire
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="form-group">
+          <div class="d-flex btn-add-formation-display">
+  
+            <div class="button-container">
+              <button class="btn  btn-annuler-add-formation" (click)="gotoListeFormation()">
+               Annuler
+              </button>
+            </div>
+  
+            <div class="button-container">
+              <button class="btn  btn-add-formation" type="submit" [disabled]="!formationForm.valid">
+                Modifier
+              </button>
+            </div>
+          </div>
+  
+        </div>
+      </form>
+  
+    </div>
+    <!--  -->
+   
+  </div>
+  
